@@ -1,0 +1,2949 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Dashboard {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}
+
+<link rel="stylesheet" type="text/css" href="/static/assets/css/jqvmap.min.css"
+    />
+
+{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="yoo-content yoo-style1">
+
+    <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+    <div class="container-fluid">
+        <div class="yoo-uikits-heading">
+            <h2 class="yoo-uikits-title">Dashboard</h2>
+        </div>
+    </div>
+    <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-3 col-sm-6">
+                <div class="yoo-iconbox yoo-style1 yoo-type1 yoo-color2
+                    yoo-border">
+                    <div class="yoo-iconbox-in">
+                        <div class="yoo-iconbox-title">TOTAL TRAFFIC</div>
+                        <div class="yoo-iconbox-number">350,897</div>
+                        <div class="yoo-iconbox-chart">
+                            <div id="yooChart4-1"></div>
+                        </div>
+                        <div class="yoo-iconbox-footer"><span
+                                class="yoo-iconbox-percentage yoo-green-color"><ion-icon
+                                    name="caret-up"></ion-icon>17%</span>Since
+                            last week</div>
+                        <div class="yoo-iconbox-icon"><ion-icon name="albums"></ion-icon></div>
+                    </div>
+                </div>
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="yoo-iconbox yoo-style1 yoo-type1 yoo-color2
+                    yoo-border">
+                    <div class="yoo-iconbox-in">
+                        <div class="yoo-iconbox-title">NEW USERS</div>
+                        <div class="yoo-iconbox-number">5,508</div>
+                        <div class="yoo-iconbox-chart">
+                            <div id="yooChart4-2"></div>
+                        </div>
+                        <div class="yoo-iconbox-footer"><span
+                                class="yoo-iconbox-percentage yoo-red-color"><ion-icon
+                                    name="caret-down"></ion-icon>5%</span>Since
+                            last week</div>
+                        <div class="yoo-iconbox-icon"><ion-icon name="people"></ion-icon></div>
+                    </div>
+                </div>
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="yoo-iconbox yoo-style1 yoo-type1 yoo-color2
+                    yoo-border">
+                    <div class="yoo-iconbox-in">
+                        <div class="yoo-iconbox-title">PAGE VIEWS</div>
+                        <div class="yoo-iconbox-number">45,089</div>
+                        <div class="yoo-iconbox-chart">
+                            <div id="yooChart4-3"></div>
+                        </div>
+                        <div class="yoo-iconbox-footer"><span
+                                class="yoo-iconbox-percentage yoo-green-color"><ion-icon
+                                    name="caret-up"></ion-icon>8%</span>Since
+                            last week</div>
+                        <div class="yoo-iconbox-icon"><ion-icon name="layers"></ion-icon></div>
+                    </div>
+                </div>
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-xl-3 col-sm-6">
+                <div class="yoo-iconbox yoo-style1 yoo-type1 yoo-color2
+                    yoo-border">
+                    <div class="yoo-iconbox-in">
+                        <div class="yoo-iconbox-title">Total Sell</div>
+                        <div class="yoo-iconbox-number">529</div>
+                        <div class="yoo-iconbox-chart">
+                            <div id="yooChart4-4"></div>
+                        </div>
+                        <div class="yoo-iconbox-footer"><span
+                                class="yoo-iconbox-percentage yoo-green-color"><ion-icon
+                                    name="caret-up"></ion-icon>8%</span>Since
+                            last week</div>
+                        <div class="yoo-iconbox-icon"><ion-icon
+                                name="file-tray"></ion-icon></div>
+                    </div>
+                </div>
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+        </div>
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-purple-bg"><ion-icon
+                                        name="cloudy"></ion-icon></span>ANALYTICS</h2>
+                        </div>
+                        <div class="yoo-card-heading-right">
+                            <ul class="nav nav-tabs">
+                                <li class="nav-item">
+                                    <a class="nav-link active" data-toggle="tab"
+                                        href="#day">Day</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab"
+                                        href="#week">Week</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link" data-toggle="tab"
+                                        href="#month">Month</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                            <div class="tab-content">
+                                <div class="tab-pane fade show active" id="day">
+                                    <ul class="yoo-list-group yoo-style2
+                                        yoo-mp0">
+                                        <li>
+                                            <div class="yoo-card-meta
+                                                yoo-style1">
+                                                <div class="yoo-card-meta-title
+                                                    yoo-blue-color
+                                                    yoo-font-semi-bold">Move</div>
+                                                <div
+                                                    class="yoo-card-meta-number">1,467
+                                                    <span>kcal</span></div>
+                                                <div class="yoo-groth-percentage
+                                                    yoo-red-color
+                                                    yoo-font-semi-bold"><ion-icon
+                                                        name="caret-down"></ion-icon>12%</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="yoo-card-meta
+                                                yoo-style1">
+                                                <div class="yoo-card-meta-title
+                                                    yoo-light-blue-color
+                                                    yoo-font-semi-bold">Exercise</div>
+                                                <div
+                                                    class="yoo-card-meta-number">1,467
+                                                    <span>kcal</span></div>
+                                                <div class="yoo-groth-percentage
+                                                    yoo-green-color
+                                                    yoo-font-semi-bold"><ion-icon
+                                                        name="caret-up"></ion-icon>16%</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div id="yooChart1"></div>
+                                    <div class="yoo-height-b20
+                                        yoo-height-lg-b20"></div>
+                                </div>
+                                <div class="tab-pane fade" id="week">
+                                    <ul class="yoo-list-group yoo-style2
+                                        yoo-mp0">
+                                        <li>
+                                            <div class="yoo-card-meta
+                                                yoo-style1">
+                                                <div class="yoo-card-meta-title
+                                                    yoo-blue-color
+                                                    yoo-font-semi-bold">Move</div>
+                                                <div
+                                                    class="yoo-card-meta-number">1,467
+                                                    <span>kcal</span></div>
+                                                <div class="yoo-groth-percentage
+                                                    yoo-red-color
+                                                    yoo-font-semi-bold"><ion-icon
+                                                        name="caret-down"></ion-icon>20%</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="yoo-card-meta
+                                                yoo-style1">
+                                                <div class="yoo-card-meta-title
+                                                    yoo-light-blue-color
+                                                    yoo-font-semi-bold">Exercise</div>
+                                                <div
+                                                    class="yoo-card-meta-number">1,467
+                                                    <span>kcal</span></div>
+                                                <div class="yoo-groth-percentage
+                                                    yoo-green-color
+                                                    yoo-font-semi-bold"><ion-icon
+                                                        name="caret-up"></ion-icon>29%</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div id="yooChart1-2"></div>
+                                    <div class="yoo-height-b5 yoo-height-lg-b5"></div>
+                                </div>
+                                <div class="tab-pane fade" id="month">
+                                    <ul class="yoo-list-group yoo-style2
+                                        yoo-mp0">
+                                        <li>
+                                            <div class="yoo-card-meta
+                                                yoo-style1">
+                                                <div class="yoo-card-meta-title
+                                                    yoo-blue-color
+                                                    yoo-font-semi-bold">Move</div>
+                                                <div
+                                                    class="yoo-card-meta-number">1,467
+                                                    <span>kcal</span></div>
+                                                <div class="yoo-groth-percentage
+                                                    yoo-red-color
+                                                    yoo-font-semi-bold"><ion-icon
+                                                        name="caret-down"></ion-icon>10%</div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="yoo-card-meta
+                                                yoo-style1">
+                                                <div class="yoo-card-meta-title
+                                                    yoo-light-blue-color
+                                                    yoo-font-semi-bold">Exercise</div>
+                                                <div
+                                                    class="yoo-card-meta-number">1,467
+                                                    <span>kcal</span></div>
+                                                <div class="yoo-groth-percentage
+                                                    yoo-green-color
+                                                    yoo-font-semi-bold"><ion-icon
+                                                        name="caret-up"></ion-icon>19%</div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <div id="yooChart1-3"></div>
+                                    <div class="yoo-height-b5 yoo-height-lg-b5"></div>
+                                </div>
+                            </div>
+                            <div class="yoo-height-b0 yoo-height-lg-b0"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-indigo-bg"><ion-icon
+                                        name="briefcase"></ion-icon></span>OVERVIEW</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                            <ul class="yoo-list-group yoo-style1 yoo-mp0">
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><div
+                                                class="yoo-box-sm yoo-radious5"><img
+                                                    src="/static/assets/img/nav-icon/gmail.png"
+                                                    alt=""></div></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">Instagram</h2>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style1">
+                                                <div class="yoo-progressbar"
+                                                    style="width: 90%"></div>
+                                                <div
+                                                    class="yoo-progressbar-number">90m</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><div
+                                                class="yoo-box-sm yoo-radious5"><img
+                                                    src="/static/assets/img/nav-icon/hangout.png"
+                                                    alt=""></div></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">Google Maps</h2>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style1">
+                                                <div class="yoo-progressbar"
+                                                    style="width: 70%"></div>
+                                                <div
+                                                    class="yoo-progressbar-number">70m</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><div
+                                                class="yoo-box-sm yoo-radious5"><img
+                                                    src="/static/assets/img/nav-icon/google.png"
+                                                    alt=""></div></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">Books</h2>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style1">
+                                                <div class="yoo-progressbar"
+                                                    style="width: 60%"></div>
+                                                <div
+                                                    class="yoo-progressbar-number">60m</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><div
+                                                class="yoo-box-sm yoo-radious5"><img
+                                                    src="/static/assets/img/nav-icon/mail.png"
+                                                    alt=""></div></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">App Store</h2>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style1">
+                                                <div class="yoo-progressbar"
+                                                    style="width: 40%"></div>
+                                                <div
+                                                    class="yoo-progressbar-number">40m</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><div
+                                                class="yoo-box-sm yoo-radious5"><img
+                                                    src="/static/assets/img/nav-icon/message.png"
+                                                    alt=""></div></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">Safari</h2>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style1">
+                                                <div class="yoo-progressbar"
+                                                    style="width: 20%"></div>
+                                                <div
+                                                    class="yoo-progressbar-number">20m</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><div
+                                                class="yoo-box-sm yoo-radious5"><img
+                                                    src="/static/assets/img/nav-icon/google.png"
+                                                    alt=""></div></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">Books</h2>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style1">
+                                                <div class="yoo-progressbar"
+                                                    style="width: 60%"></div>
+                                                <div
+                                                    class="yoo-progressbar-number">60m</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><div
+                                                class="yoo-box-sm yoo-radious5"><img
+                                                    src="/static/assets/img/nav-icon/mail.png"
+                                                    alt=""></div></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">App Store</h2>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style1">
+                                                <div class="yoo-progressbar"
+                                                    style="width: 40%"></div>
+                                                <div
+                                                    class="yoo-progressbar-number">40m</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-12">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-blue-bg"><ion-icon
+                                        name="browsers"></ion-icon></span>DATA
+                                TABLE</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="">
+                            <div class="yoo-height-b15 yoo-height-lg-b15"></div>
+                            <div class="yooDataTableWrap">
+                                <button type="button" class="btn btn-success
+                                    btn-sm yoo-table-btn1"><span
+                                        class="yoo-add">+</span> Create New</button>
+                                <button class="btn btn-outline-light btn-sm
+                                    dropdown-toggle yoo-table-btn2"
+                                    type="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">Small
+                                    button</button>
+                                <div class="dropdown-menu">
+                                    <a class="dropdown-item" href="#">Action</a>
+                                    <a class="dropdown-item" href="#">Another
+                                        action</a>
+                                    <a class="dropdown-item" href="#">Something
+                                        else here</a>
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="#">Separated
+                                        link</a>
+                                </div>
+                                <table id="yooDataTable" class="display"
+                                    style="width:100%">
+                                    <thead>
+                                        <tr>
+                                            <th>
+                                                <div class="yoo-check-mark-all">
+                                                    <span class="yoo-first"></span>
+                                                    <span class="yoo-last"></span>
+                                                </div>
+                                            </th>
+                                            <th>Status</th>
+                                            <th>Campaign Name
+                                                <button
+                                                    class="yoo-table-info-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="information-circle-outline"></ion-icon></button>
+                                                <div class="dropdown-menu
+                                                    yoo-table-info-text">
+                                                    Is it more important for
+                                                    something to be
+                                                    subscriber-defined or to be
+                                                    compelling? Our technology
+                                                    takes the best features of
+                                                    XForms and OWL.
+                                                </div>
+                                                <span class="yoo-filter-btn"><ion-icon
+                                                        name="arrow-down"></ion-icon></span>
+                                            </th>
+                                            <th>Single
+                                                <span class="yoo-filter-btn"><ion-icon
+                                                        name="arrow-down"></ion-icon></span>
+                                            </th>
+                                            <th class="yoo-arrow-wrap">Double
+                                                <span class="yoo-filter-btn"><ion-icon
+                                                        name="arrow-down"></ion-icon></span>
+                                            </th>
+                                            <th>Completion
+                                                <span class="yoo-filter-btn"><ion-icon
+                                                        name="arrow-down"></ion-icon></span>
+                                            </th>
+                                            <th>Users
+                                                <span class="yoo-filter-btn"><ion-icon
+                                                        name="arrow-down"></ion-icon></span>
+                                            </th>
+                                            <th>Graph</th>
+                                            <th>Tag
+                                                <span class="yoo-filter-btn"><ion-icon
+                                                        name="arrow-down"></ion-icon></span>
+                                            </th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/gmail.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Instagram</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$60</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$70</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">65%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 65%"
+                                                            aria-valuenow="65"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/7.jpg"
+                                                                alt="2"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/2.jpg"
+                                                                alt="4"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-5"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-success">Paid</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/hangout.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Google Maps</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$60</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$60</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">85%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 85%"
+                                                            aria-valuenow="85"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/1.jpg"
+                                                                alt="1"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/7.jpg"
+                                                                alt="2"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/5.jpg"
+                                                                alt="4"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-6"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-success">Paid</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/google.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Books</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$80</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$90</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">95%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 95%"
+                                                            aria-valuenow="95"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/4.jpg"
+                                                                alt="1"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-7"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-danger">Due</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/gmail.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Gmail</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$70</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$50</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">65%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 65%"
+                                                            aria-valuenow="65"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/4.jpg"
+                                                                alt="1"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/7.jpg"
+                                                                alt="2"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/8.jpg"
+                                                                alt="4"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-8"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-danger">Due</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/message.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Safari</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$70</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$60</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">80%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 80%"
+                                                            aria-valuenow="80"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/5.jpg"
+                                                                alt="2"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-9"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-success">Paid</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/hangout.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Google Maps</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$120</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$100</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">60%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 60%"
+                                                            aria-valuenow="60"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/1.jpg"
+                                                                alt="1"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/2.jpg"
+                                                                alt="2"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-10"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-success">Paid</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/gmail.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Gmail</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$60</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$70</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">65%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 65%"
+                                                            aria-valuenow="65"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/7.jpg"
+                                                                alt="2"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/2.jpg"
+                                                                alt="4"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-11"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-success">Paid</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/hangout.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Google Maps</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$60</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$60</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">85%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 85%"
+                                                            aria-valuenow="85"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/1.jpg"
+                                                                alt="1"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/7.jpg"
+                                                                alt="2"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/5.jpg"
+                                                                alt="4"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-12"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-success">Paid</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/hangout.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Hangout</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$80</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$90</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">95%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 95%"
+                                                            aria-valuenow="95"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/4.jpg"
+                                                                alt="1"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-13"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-danger">Due</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/mail.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Mail</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$80</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$90</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">95%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 95%"
+                                                            aria-valuenow="95"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/4.jpg"
+                                                                alt="1"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-14"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-danger">Due</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/message.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Message</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$70</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$50</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">65%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 65%"
+                                                            aria-valuenow="65"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/4.jpg"
+                                                                alt="1"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/7.jpg"
+                                                                alt="2"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/8.jpg"
+                                                                alt="4"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-15"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-danger">Due</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/google.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Google</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$60</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$70</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">65%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 65%"
+                                                            aria-valuenow="65"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/7.jpg"
+                                                                alt="2"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/2.jpg"
+                                                                alt="4"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-16"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-success">Paid</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td>
+                                                <div class="yoo-check-mark"></div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-switch">
+                                                    <div class="yoo-switch-in"></div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-medias
+                                                    yoo-style1">
+                                                    <a href="#"
+                                                        class="yoo-media-img">
+                                                        <div class="yoo-box-sm
+                                                            yoo-radious5">
+                                                            <img
+                                                                src="/static/assets/img/nav-icon/hangout.png"
+                                                                alt="">
+                                                        </div>
+                                                    </a>
+                                                    <h2 class="yoo-media-title
+                                                        yoo-margin-bottom-0"><a
+                                                            href="#">Google Maps</a></h2>
+                                                </div>
+                                            </td>
+                                            <td><span class="yoo-base-color1">$60</span></td>
+                                            <td>
+                                                <div class="yoo-line-1-2
+                                                    yoo-base-color1">$60</div>
+                                                <div class="yoo-font-size-13
+                                                    yoo-base-color2">Multiple
+                                                    Value</div>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-progress-wrap
+                                                    yoo-style3 yoo-type1">
+                                                    <div
+                                                        class="yoo-progress-head">
+                                                        <div
+                                                            class="yoo-progressbar-percentage">85%</div>
+                                                    </div>
+                                                    <div class="progress">
+                                                        <div class="progress-bar
+                                                            yoo-gray-bg"
+                                                            role="progressbar"
+                                                            style="width: 85%"
+                                                            aria-valuenow="85"
+                                                            aria-valuemin="0"
+                                                            aria-valuemax="100"></div>
+                                                    </div>
+                                                </div>
+                                            </td>
+                                            <td>
+                                                <ul class="yoo-users yoo-style1
+                                                    yoo-mp0">
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/1.jpg"
+                                                                alt="1"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/7.jpg"
+                                                                alt="2"></a></li>
+                                                    <li><a href="#"><img
+                                                                src="/static/assets/img/user/5.jpg"
+                                                                alt="4"></a></li>
+                                                </ul>
+                                            </td>
+                                            <td>
+                                                <div class="yoo-table-chart">
+                                                    <div id="yooChart4-17"></div>
+                                                </div>
+                                            </td>
+                                            <td><span class="badge
+                                                    badge-success">Paid</span></td>
+                                            <td>
+                                                <button
+                                                    class="yoo-table-action-btn
+                                                    yoo-style1" type="button"
+                                                    data-toggle="dropdown"
+                                                    aria-haspopup="true"
+                                                    aria-expanded="false"><ion-icon
+                                                        name="ellipsis-horizontal"></ion-icon></button>
+                                                <div class="dropdown-menu">
+                                                    <a class="dropdown-item"
+                                                        href="#">View</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Edit</a>
+                                                    <a class="dropdown-item"
+                                                        href="#">Delete</a>
+                                                    <div
+                                                        class="dropdown-divider"></div>
+                                                    <a class="dropdown-item"
+                                                        href="#">Export</a>
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-gray-bg"><ion-icon
+                                        name="cloudy"></ion-icon></span>Sessions
+                                by Country</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                            <div class="yoo-svg-map yoo-style1">
+                                <div id="svg-usa" class="vmap-wrapper"></div>
+                            </div>
+                            <div class="yoo-height-b15 yoo-height-lg-b15"></div>
+                            <div class="yoo-progress-wrap yoo-style3">
+                                <div class="yoo-progress-head">
+                                    <div class="yoo-progressbar-title">New York</div>
+                                    <div class="yoo-progressbar-percentage">65%</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar yoo-gray-bg"
+                                        role="progressbar" style="width: 65%"
+                                        aria-valuenow="65" aria-valuemin="0"
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="yoo-height-b10 yoo-height-lg-b10"></div>
+                            <div class="yoo-progress-wrap yoo-style3">
+                                <div class="yoo-progress-head">
+                                    <div class="yoo-progressbar-title">Texas</div>
+                                    <div class="yoo-progressbar-percentage">80%</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar yoo-gray-bg"
+                                        role="progressbar" style="width: 80%"
+                                        aria-valuenow="80" aria-valuemin="0"
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="yoo-height-b10 yoo-height-lg-b10"></div>
+                            <div class="yoo-progress-wrap yoo-style3">
+                                <div class="yoo-progress-head">
+                                    <div class="yoo-progressbar-title">South
+                                        Dakota</div>
+                                    <div class="yoo-progressbar-percentage">40%</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar yoo-gray-bg"
+                                        role="progressbar" style="width: 40%"
+                                        aria-valuenow="40" aria-valuemin="0"
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="yoo-height-b10 yoo-height-lg-b10"></div>
+                            <div class="yoo-progress-wrap yoo-style3">
+                                <div class="yoo-progress-head">
+                                    <div class="yoo-progressbar-title">Washington</div>
+                                    <div class="yoo-progressbar-percentage">70%</div>
+                                </div>
+                                <div class="progress">
+                                    <div class="progress-bar yoo-gray-bg"
+                                        role="progressbar" style="width: 70%"
+                                        aria-valuenow="70" aria-valuemin="0"
+                                        aria-valuemax="100"></div>
+                                </div>
+                            </div>
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon
+                                    yoo-light-blue-bg"><ion-icon name="copy"></ion-icon></span>Sessions
+                                by Device</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div id="yooChart2"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-red-bg"><ion-icon
+                                        name="person-circle"></ion-icon></span>Active
+                                Users</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-15">
+                            <div id="yooChart3"></div>
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-purple-bg"><ion-icon
+                                        name="flask"></ion-icon></span>New Users</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                            <ul class="yoo-list-group yoo-style1 yoo-type1
+                                yoo-mp0">
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-purple-box"><img
+                                                    src="/static/assets/img/user/9.png"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0
+                                                yoo-margin-top-2">Deborah Clarke</h2>
+                                            <div class="yoo-media-subtitle">dc@gmail.com</div>
+                                        </div>
+                                        <span class="badge badge-success">SignUp</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-purple-box"><img
+                                                    src="/static/assets/img/user/10.png"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0
+                                                yoo-margin-top-2">Jay Bryant</h2>
+                                            <div class="yoo-media-subtitle">jb@gmail.com</div>
+                                        </div>
+                                        <span class="badge badge-success">SignUp</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-purple-box"><img
+                                                    src="/static/assets/img/user/11.png"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0
+                                                yoo-margin-top-2">Rita Parks</h2>
+                                            <div class="yoo-media-subtitle">rp@gmail.com</div>
+                                        </div>
+                                        <span class="badge badge-primary">Subscribe</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-purple-box"><img
+                                                    src="/static/assets/img/user/12.png"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0
+                                                yoo-margin-top-2">Eula Bailey</h2>
+                                            <div class="yoo-media-subtitle">eb@gmail.com</div>
+                                        </div>
+                                        <span class="badge badge-success">SignUp</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-purple-box"><img
+                                                    src="/static/assets/img/user/13.png"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0
+                                                yoo-margin-top-2">Darin Osborne</h2>
+                                            <div class="yoo-media-subtitle">do@gmail.com</div>
+                                        </div>
+                                        <span class="badge badge-primary">Subscribe</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-purple-box"><img
+                                                    src="/static/assets/img/user/14.png"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0
+                                                yoo-margin-top-2">Jay Bryant</h2>
+                                            <div class="yoo-media-subtitle">jb@gmail.com</div>
+                                        </div>
+                                        <span class="badge badge-success">SignUp</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-gray-bg"><ion-icon
+                                        name="notifications"></ion-icon></span>Active
+                                Tasks</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                            <ul class="yoo-task-list yoo-style1 yoo-mp0">
+                                <li>
+                                    <div class="yoo-task-checkmark">
+                                        <div class="yoo-switch yoo-style1"></div>
+                                    </div>
+                                    <div class="yoo-task-text">
+                                        <span class="badge badge-secondary">SignUp</span>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <h3><a href="#">New Employee intro</a></h3>
+                                        <div class="yoo-ativity-time"><ion-icon
+                                                name="time"></ion-icon>
+                                            Scheduled For 3.00 PM on Jan 2019</div>
+                                    </div>
+                                    <div class="yoo-button-group yoo-style2">
+                                        <a href="#" class="yoo-btn yoo-style4"><ion-icon
+                                                name="build"></ion-icon></a>
+                                        <a href="#" class="yoo-btn yoo-style4"><ion-icon
+                                                name="trash"></ion-icon></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-task-checkmark">
+                                        <div class="yoo-switch yoo-style1"></div>
+                                    </div>
+                                    <div class="yoo-task-text">
+                                        <span class="badge badge-secondary">SignUp</span>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <h3><a href="#">Send email to CEO</a></h3>
+                                        <div class="yoo-ativity-time"><ion-icon
+                                                name="time"></ion-icon>
+                                            Scheduled For 3.00 PM on Jan 2019</div>
+                                    </div>
+                                    <div class="yoo-button-group yoo-style2">
+                                        <a href="#" class="yoo-btn yoo-style4"><ion-icon
+                                                name="build"></ion-icon></a>
+                                        <a href="#" class="yoo-btn yoo-style4"><ion-icon
+                                                name="trash"></ion-icon></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-task-checkmark">
+                                        <div class="yoo-switch yoo-style1"></div>
+                                    </div>
+                                    <div class="yoo-task-text">
+                                        <span class="badge badge-secondary">SignUp</span>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <h3><a href="#">New Joing Employee
+                                                Welcome</a></h3>
+                                        <div class="yoo-ativity-time"><ion-icon
+                                                name="time"></ion-icon>
+                                            Scheduled For 3.00 PM on Jan 2019</div>
+                                    </div>
+                                    <div class="yoo-button-group yoo-style2">
+                                        <a href="#" class="yoo-btn yoo-style4"><ion-icon
+                                                name="build"></ion-icon></a>
+                                        <a href="#" class="yoo-btn yoo-style4"><ion-icon
+                                                name="trash"></ion-icon></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-task-checkmark">
+                                        <div class="yoo-switch yoo-style1"></div>
+                                    </div>
+                                    <div class="yoo-task-text">
+                                        <span class="badge badge-secondary">SignUp</span>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <h3>
+                                            <a href="#">Birthday Wish</a>
+                                        </h3>
+                                        <div class="yoo-ativity-time"><ion-icon
+                                                name="time"></ion-icon>
+                                            Scheduled For 3.00 PM on Jan 2019</div>
+                                    </div>
+                                    <div class="yoo-button-group yoo-style2">
+                                        <a href="#" class="yoo-btn yoo-style4"><ion-icon
+                                                name="build"></ion-icon></a>
+                                        <a href="#" class="yoo-btn yoo-style4"><ion-icon
+                                                name="trash"></ion-icon></a>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-task-checkmark">
+                                        <div class="yoo-switch yoo-style1"></div>
+                                    </div>
+                                    <div class="yoo-task-text">
+                                        <span class="badge badge-secondary">SignUp</span>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <h3><a href="#">Send email to CEO</a></h3>
+                                        <div class="yoo-ativity-time"><ion-icon
+                                                name="time"></ion-icon>
+                                            Scheduled For 3.00 PM on Jan 2019</div>
+                                    </div>
+                                    <div class="yoo-button-group yoo-style2">
+                                        <a href="#" class="yoo-btn yoo-style4"><ion-icon
+                                                name="build"></ion-icon></a>
+                                        <a href="#" class="yoo-btn yoo-style4"><ion-icon
+                                                name="trash"></ion-icon></a>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon
+                                    yoo-light-blue-bg"><ion-icon name="archive"></ion-icon></span>SUPPORT
+                                TICKETS</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                            <div class="yoo-margin-bottom-3">
+                                <ul class="yoo-list-group yoo-style1 yoo-type1
+                                    yoo-mp0">
+                                    <li>
+                                        <div class="yoo-medias yoo-style1
+                                            yoo-type1">
+                                            <div class="yoo-media-img">
+                                                <div class="yoo-box-md
+                                                    yoo-radious10 yoo-img-box
+                                                    yoo-purple-box"><img
+                                                        src="/static/assets/img/user/9.png"
+                                                        alt=""></div>
+                                            </div>
+                                            <div class="yoo-media-meta">
+                                                <h2 class="yoo-media-title
+                                                    yoo-margin-bottom-0">Deborah
+                                                    Clarke</h2>
+                                                <div class="yoo-media-subtitle">dc@gmail.com</div>
+                                                <div class="yoo-media-text">Lorem
+                                                    ipsum dolor sit amet,
+                                                    consectetuer edipiscing elit
+                                                    sed diam....</div>
+                                            </div>
+                                            <span class="badge badge-danger">Pending</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="yoo-medias yoo-style1
+                                            yoo-type1">
+                                            <div class="yoo-media-img">
+                                                <div class="yoo-box-md
+                                                    yoo-radious10 yoo-img-box
+                                                    yoo-purple-box"><img
+                                                        src="/static/assets/img/user/10.png"
+                                                        alt=""></div>
+                                            </div>
+                                            <div class="yoo-media-meta">
+                                                <h2 class="yoo-media-title
+                                                    yoo-margin-bottom-0">Jay
+                                                    Bryant</h2>
+                                                <div class="yoo-media-subtitle">jb@gmail.com</div>
+                                                <div class="yoo-media-text">Lorem
+                                                    ipsum dolor sit amet,
+                                                    consectetuer edipiscing elit
+                                                    sed diam....</div>
+                                            </div>
+                                            <span class="badge badge-danger">Pending</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="yoo-medias yoo-style1
+                                            yoo-type1">
+                                            <div class="yoo-media-img">
+                                                <div class="yoo-box-md
+                                                    yoo-radious10 yoo-img-box
+                                                    yoo-purple-box"><img
+                                                        src="/static/assets/img/user/11.png"
+                                                        alt=""></div>
+                                            </div>
+                                            <div class="yoo-media-meta">
+                                                <h2 class="yoo-media-title
+                                                    yoo-margin-bottom-0">Rita
+                                                    Parks</h2>
+                                                <div class="yoo-media-subtitle">rp@gmail.com</div>
+                                                <div class="yoo-media-text">Lorem
+                                                    ipsum dolor sit amet,
+                                                    consectetuer edipiscing elit
+                                                    sed diam....</div>
+                                            </div>
+                                            <span class="badge badge-warning">Open</span>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="yoo-medias yoo-style1
+                                            yoo-type1">
+                                            <div class="yoo-media-img">
+                                                <div class="yoo-box-md
+                                                    yoo-radious10 yoo-img-box
+                                                    yoo-purple-box"><img
+                                                        src="/static/assets/img/user/12.png"
+                                                        alt=""></div>
+                                            </div>
+                                            <div class="yoo-media-meta">
+                                                <h2 class="yoo-media-title
+                                                    yoo-margin-bottom-0">Eula
+                                                    Bailey</h2>
+                                                <div class="yoo-media-subtitle">eb@gmail.com</div>
+                                                <div class="yoo-media-text">Lorem
+                                                    ipsum dolor sit amet,
+                                                    consectetuer edipiscing elit
+                                                    sed diam....</div>
+                                            </div>
+                                            <span class="badge badge-secondary">Close</span>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="yoo-height-b15 yoo-height-lg-b15"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-green-bg"><ion-icon
+                                        name="cube"></ion-icon></span>PRODUCTS</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                            <ul class="yoo-list-group yoo-style1 yoo-mp0">
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><img
+                                                src="/static/assets/img/product-img/01.png"
+                                                alt=""></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">iPhone 11
+                                                Pro Max</h2>
+                                            <div class="yoo-media-subtitle">Phone</div>
+                                        </div>
+                                        <span class="yoo-media-tag">$999</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><img
+                                                src="/static/assets/img/product-img/02.png"
+                                                alt=""></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">iPhone 11
+                                                Pro</h2>
+                                            <div class="yoo-media-subtitle">Phone</div>
+                                        </div>
+                                        <span class="yoo-media-tag">$799</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><img
+                                                src="/static/assets/img/product-img/06.png"
+                                                alt=""></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">Watch
+                                                Series 5</h2>
+                                            <div class="yoo-media-subtitle">Watch</div>
+                                        </div>
+                                        <span class="yoo-media-tag">$659</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><img
+                                                src="/static/assets/img/product-img/04.png"
+                                                alt=""></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">Watch
+                                                Series 5 Aluminum</h2>
+                                            <div class="yoo-media-subtitle">Watch</div>
+                                        </div>
+                                        <span class="yoo-media-tag">$249</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><img
+                                                src="/static/assets/img/product-img/05.png"
+                                                alt=""></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">iPad Pro
+                                                12.9 (2017)</h2>
+                                            <div class="yoo-media-subtitle">Pad</div>
+                                        </div>
+                                        <span class="yoo-media-tag">$499</span>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1">
+                                        <div class="yoo-media-img"><img
+                                                src="/static/assets/img/product-img/02.png"
+                                                alt=""></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0">iPhone 11</h2>
+                                            <div class="yoo-media-subtitle">Phone</div>
+                                        </div>
+                                        <span class="yoo-media-tag">$499</span>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                        </div>
+                        <div class="yoo-margin-top-3"></div>
+                        <hr>
+                        <a href="#" class="yoo-btn yoo-style2">SEE ALL <ion-icon
+                                name="chevron-forward"></ion-icon></a>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-orange-bg"><ion-icon
+                                        name="contrast"></ion-icon></span>INVENTORY</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                            <ul class="yoo-list-group yoo-style1 yoo-type1
+                                yoo-mp0">
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-purple-box"><ion-icon
+                                                    name="file-tray-full"></ion-icon></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style2">
+                                                <div
+                                                    class="yoo-progressbar-title">PRODUCTS</div>
+                                                <div
+                                                    class="yoo-progressbar-number">7,300</div>
+                                                <div
+                                                    class="yoo-progressbar-out"><div
+                                                        class="yoo-progressbar"
+                                                        style="width: 20%"></div></div>
+                                            </div>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                        </div>
+                                        <div class="yoo-groth-percentage
+                                            yoo-green-color yoo-font-semi-bold">
+                                            <ion-icon name="caret-up"></ion-icon>17%
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-red-box"><ion-icon
+                                                    name="card"></ion-icon></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style2">
+                                                <div
+                                                    class="yoo-progressbar-title">SALES</div>
+                                                <div
+                                                    class="yoo-progressbar-number">8,560</div>
+                                                <div
+                                                    class="yoo-progressbar-out"><div
+                                                        class="yoo-progressbar"
+                                                        style="width: 50%"></div></div>
+                                            </div>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                        </div>
+                                        <div class="yoo-groth-percentage
+                                            yoo-red-color yoo-font-semi-bold">
+                                            <ion-icon name="caret-down"></ion-icon>12%
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-indigo-box"><ion-icon
+                                                    name="stats-chart"></ion-icon></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style2">
+                                                <div
+                                                    class="yoo-progressbar-title">Conversion</div>
+                                                <div
+                                                    class="yoo-progressbar-number">10,500</div>
+                                                <div
+                                                    class="yoo-progressbar-out"><div
+                                                        class="yoo-progressbar"
+                                                        style="width: 70%"></div></div>
+                                            </div>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                        </div>
+                                        <div class="yoo-groth-percentage
+                                            yoo-red-color yoo-font-semi-bold">
+                                            <ion-icon name="caret-down"></ion-icon>10%
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-light-blue-box"><ion-icon
+                                                    name="cloud"></ion-icon></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style2">
+                                                <div
+                                                    class="yoo-progressbar-title">LIKES</div>
+                                                <div
+                                                    class="yoo-progressbar-number">9,900</div>
+                                                <div
+                                                    class="yoo-progressbar-out"><div
+                                                        class="yoo-progressbar"
+                                                        style="width: 85%"></div></div>
+                                            </div>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                        </div>
+                                        <div class="yoo-groth-percentage
+                                            yoo-green-color yoo-font-semi-bold">
+                                            <ion-icon name="caret-up"></ion-icon>25%
+                                        </div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style1
+                                        yoo-type1">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-md yoo-radious10
+                                                yoo-img-box yoo-green-box"><ion-icon
+                                                    name="pie-chart"></ion-icon></div>
+                                        </div>
+                                        <div class="yoo-media-meta">
+                                            <div class="yoo-progressbar-wrap
+                                                yoo-style2">
+                                                <div
+                                                    class="yoo-progressbar-title">COST
+                                                    PER SALE</div>
+                                                <div
+                                                    class="yoo-progressbar-number">150</div>
+                                                <div
+                                                    class="yoo-progressbar-out"><div
+                                                        class="yoo-progressbar"
+                                                        style="width: 75%"></div></div>
+                                            </div>
+                                            <div class="yoo-height-b5
+                                                yoo-height-lg-b5"></div>
+                                        </div>
+                                        <div class="yoo-groth-percentage
+                                            yoo-green-color yoo-font-semi-bold">
+                                            <ion-icon name="caret-up"></ion-icon>05%
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon
+                                    yoo-light-blue-bg"><ion-icon name="people"></ion-icon></span>USERS</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                            <ul class="yoo-list-group yoo-style3 yoo-mp0">
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/1.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Parks</h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">9th Jan</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/2.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Eula</h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">11th Jan</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/3.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Deborah </h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">13th Feb</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/4.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Alexandar</h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">20th Feb</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/5.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Bailey</h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">13th May</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/6.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Bryant</h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">15th Jun</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/7.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Darin</h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">20th Jun</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/8.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Osborne</h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">19th July</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/1.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Parks</h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">9th Jan</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/2.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Eula</h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">11th Jan</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/3.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Deborah </h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">13th Feb</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                                <li>
+                                    <div class="yoo-medias yoo-style2
+                                        text-center">
+                                        <div class="yoo-media-img">
+                                            <div class="yoo-box-lg yoo-radious50
+                                                yoo-img-box yoo-user-img
+                                                yoo-purple-box ml-auto mr-auto"><img
+                                                    src="/static/assets/img/user/4.jpg"
+                                                    alt=""></div>
+                                        </div>
+                                        <div class="yoo-height-b5
+                                            yoo-height-lg-b5"></div>
+                                        <div class="yoo-media-meta">
+                                            <h2 class="yoo-media-title
+                                                yoo-margin-bottom-0 yoo-m0
+                                                yoo-font-size-14
+                                                yoo-font-medium">Alexandar</h2>
+                                            <div class="yoo-media-subtitle
+                                                yoo-base-color3
+                                                yoo-font-size-13">20th Feb</div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b10
+                                        yoo-height-lg-b10"></div>
+                                </li>
+                            </ul>
+                            <div class="yoo-height-b5 yoo-height-lg-b5"></div>
+                        </div>
+                        <hr>
+                        <a href="#" class="yoo-btn yoo-style2">SEE ALL <ion-icon
+                                name="chevron-forward"></ion-icon></a>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-8">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-gray-bg"><ion-icon
+                                        name="map"></ion-icon></span>Overview</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-height-b20 yoo-height-lg-b20"></div>
+                            <div id="yooChart4"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-blue-bg"><ion-icon
+                                        name="pricetag"></ion-icon></span>Monthly
+                                goal</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-flex">
+                                <div id="yooChart5"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-purple-bg"><ion-icon
+                                        name="beer"></ion-icon></span>Employee
+                                Performance</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div class="yoo-performance-chart">
+                                <div id="yooChart7"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-8">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-indigo-bg"><ion-icon
+                                        name="basketball"></ion-icon></span>Combination
+                                Chart</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div id="yooChart9"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-4">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon
+                                    yoo-light-blue-bg"><ion-icon name="server"></ion-icon></span>Stacked
+                                Bar Chart</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-height-b10 yoo-height-lg-b10"></div>
+                        <div class="yoo-padd-lr-20">
+                            <div id="yooChart8"></div>
+                        </div>
+                        <div class="yoo-height-b5 yoo-height-lg-b5"></div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+            <div class="col-lg-8">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title"><span
+                                    class="yoo-card-title-icon yoo-gray-bg"><ion-icon
+                                        name="color-filter"></ion-icon></span>Timeline
+                                Charts</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-padd-lr-20">
+                            <div id="yooChart10"></div>
+                        </div>
+                    </div>
+                </div><!-- .yoo-card -->
+                <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+            </div><!-- .col -->
+        </div>
+    </div>
+    <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+
+    {% include 'includes/footer.html' %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script src="/static/assets/js/smooth-scrollbar.js"></script>
+<script src="/static/assets/js/apexcharts.min.js"></script>
+<script src="/static/assets/js/apexcharts.initialize.js"></script>
+<script src="/static/assets/js/svg-maps/jquery.vmap.min.js"></script>
+<script src="/static/assets/js/svg-maps/jquery.vmap.usa.js"></script>
+<script src="/static/assets/js/svg-maps/jquery.vmap.main.js"></script>
+<script src="/static/assets/js/jquery.dataTables.min.js"></script>
+
+{% endblock javascripts %}

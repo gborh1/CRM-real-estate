@@ -1,0 +1,36 @@
+.carousel-indicators li {
+	width: 100px;
+	height: 10px;
+	border-radius: 10%;
+	background-color: blue;
+}
+.carousel-indicators {
+	bottom: -50px;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+	visibility: hidden;
+}
+
+.carousel:hover .carousel-control-prev,
+.carousel:hover .carousel-control-next {
+	visibility: visible;
+}
+
+#background {
+	/* position: absolute; */
+	z-index: 0;
+	/* background: white; */
+	display: block;
+	min-height: 50%;
+	min-width: 50%;
+	color: yellow;
+}
+
+#bg-text {
+	color: lightgrey;
+	/* font-size: 120px; */
+	/* transform: rotate(300deg); */
+	/* -webkit-transform: rotate(300deg); */
+}

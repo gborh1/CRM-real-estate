@@ -1,0 +1,264 @@
+{% extends "layouts/base.html" %}
+
+{% block title %} Contact Details {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}<link rel="stylesheet" type="text/css"
+    href="/static/assets/css/jane.css" /> {% endblock stylesheets %}
+
+{% block content %}
+
+<div class="yoo-content yoo-style1">
+
+    <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+    <div class="container">
+        <div class="yoo-uikits-heading">
+            <h2 class="yoo-uikits-title">Contact</h2>
+        </div>
+    </div>
+    <div class="yoo-height-b30 yoo-height-lg-b30"></div>
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="yoo-card yoo-style1">
+                    <div class="yoo-card-heading">
+                        <div class="yoo-card-heading-left">
+                            <h2 class="yoo-card-title">Contact Details</h2>
+                        </div>
+                    </div>
+                    <div class="yoo-card-body">
+                        <div class="yoo-contact-wrap yoo-style1">
+                            <div class="yoo-contact-right">
+                                <div class="yoo-padd-lr-30">
+                                    <div class="yoo-height-b30
+                                        yoo-height-lg-b30"></div>
+                                    <div class="yoo-user yoo-style4">
+                                        <div class="yoo-user-img">
+                                            <img
+                                                src={{contact.image_url}}
+                                                alt="">
+                                        </div>
+                                        <div class="yoo-user-info">
+                                            <h3 class="yoo-user-name">{{contact.primary_first_name}}
+                                                {{contact.primary_last_name}}</h3>
+                                            <span class="yoo-lavel">Status:
+                                                <span class="badge
+                                                    badge-primary">{{contact.status.value}}</span>
+                                                {%if contact.past_client %}
+                                                <span class="badge
+                                                    badge-success ml-2">Former
+                                                    Client</span>
+                                                {% endif %}
+                                            </span>
+                                            <div class="yoo-height-b15
+                                                yoo-height-lg-b15"></div>
+                                            <!-- modal button  -->
+                                            <div class="yoo-user-btns">
+                                                <a
+                                                    href="/contacts/{{contact.id}}/edit"
+                                                    class="btn
+                                                    btn-outline-link">Edit</a>
+                                                <!-- <a href="#" class="btn
+                                                    btn-outline-link"
+                                                    data-toggle="modal"
+                                                    data-target="#contactModal"
+                                                    data-whatever="@mdo">Edit</a> -->
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b30
+                                        yoo-height-lg-b30"></div>
+                                    <!-- Beginning of the info section -->
+                                    <hr class="md-6">
+                                    <div class="yoo-height-b25
+                                        yoo-height-lg-b25"></div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+
+                                            <ul class="yoo-contact-info-list
+                                                yoo-mp0">
+                                                <li>
+                                                    <div class="row yoo-mp0"
+                                                        style="width:100%">
+                                                        <div
+                                                            class="yoo-contact-info-label
+                                                            col-6 yoo-mp0">Email:</div>
+                                                        <div
+                                                            class="yoo-contact-info-details
+                                                            col-6 yoo-mp0">{{contact.primary_email}}</div>
+                                                    </div>
+
+                                                </li>
+                                                <li>
+                                                    <div class="row yoo-mp0"
+                                                        style="width:100%">
+                                                        <div
+                                                            class="yoo-contact-info-label
+                                                            col-6 yoo-mp0">Phone
+                                                            Number:</div>
+                                                        <div
+                                                            class="yoo-contact-info-details
+                                                            col-6 yoo-mp0">{{contact.primary_phone}}</div>
+                                                    </div>
+
+                                                </li>
+                                                <li>
+                                                    <div class="row yoo-mp0"
+                                                        style="width:100%">
+                                                        <div
+                                                            class="yoo-contact-info-label
+                                                            col-6 yoo-mp0">Address</div>
+                                                        <div
+                                                            class="yoo-contact-info-details
+                                                            col-6 yoo-mp0">{{contact.get_address()}}</div>
+                                                    </div>
+
+                                                </li>
+                                                <li>
+                                                    <div class="row yoo-mp0"
+                                                        style="width:100%">
+                                                        <div
+                                                            class="yoo-contact-info-label
+                                                            col-6 yoo-mp0">Date
+                                                            of Birth</div>
+                                                        <div
+                                                            class="yoo-contact-info-details
+                                                            col-6 yoo-mp0">{%if
+                                                            contact.primary_DOB%}{{contact.primary_DOB.strftime("%m/%d/%Y")}}
+                                                            {%endif%}</div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="row yoo-mp0"
+                                                        style="width:100%">
+                                                        <div
+                                                            class="yoo-contact-info-label
+                                                            col-6 yoo-mp0">Mail
+                                                            Preference:</div>
+                                                        <div
+                                                            class="yoo-contact-info-details
+                                                            col-6 yoo-mp0"><span
+                                                                class="yoo-lavel">
+                                                                <span
+                                                                    class="badge
+                                                                    badge-secondary">{{contact.mail_preference.value}}</span>
+                                                            </span></div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+
+                                        <div class="col-md-6 mt-4 mt-md-0">
+
+                                            <ul class="yoo-contact-info-list
+                                                yoo-mp0">
+                                                <li>
+                                                    <div class="row yoo-mp0"
+                                                        style="width:100%">
+                                                        <div
+                                                            class="yoo-contact-info-label
+                                                            col-6 yoo-mp0">Second
+                                                            Contact:</div>
+                                                        <div
+                                                            class="yoo-contact-info-details
+                                                            col-6 yoo-mp0">{{contact.secondary_first_name}}
+                                                            {{contact.secondary_last_name}}</div>
+                                                    </div>
+
+                                                </li>
+                                                <li>
+                                                    <div class="row yoo-mp0"
+                                                        style="width:100%">
+                                                        <div
+                                                            class="yoo-contact-info-label
+                                                            col-6 yoo-mp0">Email
+                                                            2:</div>
+                                                        <div
+                                                            class="yoo-contact-info-details
+                                                            col-6 yoo-mp0">{{contact.secondary_email}}</div>
+                                                    </div>
+
+                                                </li>
+                                                <li>
+                                                    <div class="row yoo-mp0"
+                                                        style="width:100%">
+                                                        <div
+                                                            class="yoo-contact-info-label
+                                                            col-6 yoo-mp0">
+                                                            Phone
+                                                            Number 2:</div>
+                                                        <div
+                                                            class="yoo-contact-info-details
+                                                            col-6 yoo-mp0">{{contact.secondary_phone}}</div>
+                                                    </div>
+
+                                                </li>
+
+                                                <li>
+                                                    <div class="row yoo-mp0"
+                                                        style="width:100%">
+                                                        <div
+                                                            class="yoo-contact-info-label
+                                                            col-6 yoo-mp0">Date
+                                                            of Birth 2</div>
+                                                        <div
+                                                            class="yoo-contact-info-details
+                                                            col-6 yoo-mp0">{%if
+                                                            contact.secondary_DOB%}{{contact.secondary_DOB.strftime("%m/%d/%Y")}}
+                                                            {%endif%}</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+
+                                        </div>
+                                    </div>
+                                    <div class="yoo-height-b25
+                                        yoo-height-lg-b25"></div>
+                                    <!-- Beginning of the  Notes Section-->
+
+
+                                    <hr>
+                                    <div class="yoo-height-b20
+                                        yoo-height-lg-b20"></div>
+                                    <div class="yoo-user-heading yoo-style1
+                                        yoo-type1">
+                                        <h2 class="yoo-user-title">Notes</h2>
+                                    </div>
+
+                                    {{contact.notes}}
+
+                                    <div class="mt-3">
+
+                                    </div>
+                                    <div class="yoo-height-b120
+                                        yoo-height-lg-b120"></div>
+
+                                    <div class="yoo-height-b20
+                                        yoo-height-lg-b20"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- .col -->
+        </div>
+    </div>
+    <div class="yoo-height-b60 yoo-height-lg-b60"></div>
+
+
+
+    {% include 'includes/footer.html' %}
+
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}
+
+<script src="/static/assets/js/apexcharts.min.js"></script>
+<script src="/static/assets/js/apexcharts.initialize.js"></script>
+
+{% endblock javascripts %}

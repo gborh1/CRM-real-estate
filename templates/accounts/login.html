@@ -1,0 +1,93 @@
+{% extends "layouts/base-fullscreen.html" %}
+
+{% block title %} Login {% endblock %}
+
+<!-- Specific CSS goes HERE -->
+{% block stylesheets %}{% endblock stylesheets %}
+
+{% block content %}
+
+<div class="yoo-login-wrap yoo-style2">
+
+  <div class="yoo-left-login">
+
+    <form method="post" action="" class="yoo-form yoo-style2">
+
+
+      {{ form.hidden_tag() }}
+
+      <div class="yoo-form-logo">
+        <img src="/static/assets/img/signup/jane-logo.png" alt="">
+      </div>
+      <div class="yoo-height-b25 yoo-height-lg-b25"></div>
+      <h2 class="yoo-form-title">
+        <a target="_blank"
+          href="">Sign in to continue </a>
+      </h2>
+      <div class="yoo-form-subtitle">
+        {% if msg %}
+        LOGIN - {{ msg | safe }}
+        {% else %}
+        Don't have a account? <a href={{ url_for('signup') }}
+          class="yoo-form-btn yoo-style2">Register</a>
+        {% endif %}
+      </div>
+      <div class="yoo-height-b25 yoo-height-lg-b25"></div>
+      <div class="yoo-height-b15 yoo-height-lg-b15"></div>
+      {% for category, message in get_flashed_messages(with_categories=True) %}
+      <div class="alert alert-{{ category }}">{{ message }}</div>
+      {% endfor %}
+      <div class="yoo-form-separator"> &nbsp; </div>
+      <div class="yoo-height-b15 yoo-height-lg-b15"></div>
+      <div class="row">
+        {% for field in form
+        if field.widget.input_type != 'hidden' %}
+
+        <div class="col-lg-12">
+          <div class="form-group level-up form-group-md">
+            {{field.label}}
+            {{field(class_="form-control")}}
+            {% for err in field.errors %}
+            <small class="form-text text-danger">
+              {{err}}
+            </small>
+            {% endfor %}
+          </div>
+        </div>
+        {% endfor %}
+        <div class="col-lg-12">
+          <div class="form-group">
+            <div class="yoo-forget-pass-wrap">
+              <div class="custom-control custom-checkbox">
+                <input class="custom-control-input" type="checkbox"
+                  id="gridCheck">
+                <label class="custom-control-label" for="gridCheck">
+                  <span class="custom-control-shadow"></span>Remember me
+                </label>
+              </div>
+              <a href={{ url_for('signup') }}
+                class="yoo-form-btn yoo-style2">Forgot Password</a>
+            </div>
+          </div>
+          <button type="submit" name="login"
+            class="yoo-form-btn yoo-style1 yoo-color1"><span>Login</span>
+          </button>
+
+          <br />
+          <div>
+            &copy; <a target="_blank" href="">Jane Rothe Corp.</a>
+          </div>
+
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <div class="yoo-left-right yoo-bg yoo-dynamicbg" style="background-image:
+    url(/static/assets/img/signup/04.jpg);"></div>
+</div>
+
+{% endblock content %}
+
+<!-- Specific Page JS goes HERE  -->
+{% block javascripts %}{% endblock javascripts %}

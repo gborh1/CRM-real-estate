@@ -1,0 +1,47 @@
+<!-- This is a combination of the default embed option for non developers on typeform's site, and their developer embed suggestions. 
+The default embed uses iframe element with the src being the link to the form.  This method, however uses a regular div with an ID
+that is referenced when creating the widget. I used the iframe positioning attributes to make sure it was full screen. Note that making the widget
+Manually allows for changing certain attributes like what happens when you submit the form.  -->
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+        <style type="text/css"> html{ margin: 0; height: 100%; overflow: hidden; } iframe{ position: absolute; left:0; right:0; bottom:0; top:0; border:0; } </style>
+        <link rel="stylesheet"
+            href="https://bootswatch.com/4/united/bootstrap.min.css">
+        <title>Onboarding</title>
+    </head>
+
+    <body>
+        <div class="container">
+
+            <!-- This is the DOM element that will contain your embedded typeform -->
+            <div id="my-embedded-typeform"
+                style="position: absolute; left:0; right:0; bottom:0; top:0;
+                border:0;"> </div>
+
+        </div>
+        <script src="https://embed.typeform.com/embed.js"
+            type="text/javascript"></script>
+        <script type="text/javascript">
+    window.addEventListener("DOMContentLoaded", function() {
+      var el = document.getElementById("my-embedded-typeform");
+      
+      // When instantiating a widget embed, you must provide the DOM element
+      // that will contain your typeform, the URL of your typeform, and your
+      // desired embed settings
+      window.typeformEmbed.makeWidget(el, "https://form.typeform.com/to/AeHjobEo", {
+        hideFooter: false,
+        hideHeaders: true,
+        opacity: 100, 
+        onSubmit: function(){
+            location= '/';
+        }
+      });
+    });
+  </script>
+    </body>
+
+</html>

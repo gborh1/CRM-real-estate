@@ -1,0 +1,29 @@
+
+
+  <div class="yoo-sidebarheader-toggle">
+    <div class="yoo-button-bar1"></div>
+    <div class="yoo-button-bar2"></div>
+    <div class="yoo-button-bar3"></div>
+  </div><!-- .yoo-sidebarheader-toggle -->
+
+  <div class="yoo-sidebarheader yoo-blur-wrap">
+    <div class="yoo-blur-wrap-in" style="background-image: url(/static/assets/img/bg.jpg);">
+        <div class="yoo-sidebarheader-in" data-scrollbar>
+            <div class="yoo-blur">
+            <div class="yoo-blur-in1"></div>
+            <div class="yoo-blur-in2"></div>
+            </div>        
+            <div class="yoo-sidebar-search">
+                <form action="#" class="yoo-search yoo-style1 yoo-search-md">
+                <input type="text" placeholder="Search..." class="yoo-search-input">
+                <button class="yoo-search-submit"><ion-icon name="search"></ion-icon></button>
+                <button class="yoo-voice-btn"><ion-icon name="mic"></ion-icon></button>
+                </form>
+            </div>
+
+            <!-- Holds the common menus -->
+            {% include 'includes/sidebar-inner.html' %}
+
+        </div>
+    </div>    
+  </div><!-- .yoo-sidebarheader -->

@@ -1,0 +1,626 @@
+
+<!-- Holds the common menus -->
+<div class="yoo-sidebar-nav border border-danger">
+    <div class="yoo-sidebar-nav-title">
+        <span class="yoo-sidebar-nav-title-text">Dashboard</span>
+        <span class="yoo-sidebar-nav-title-dotline"><ion-icon
+                name="ellipsis-horizontal"></ion-icon></span>
+    </div>
+    <ul class="yoo-sidebar-nav-list yoo-mp0">
+        <li class="yoo-sidebar-has-children">
+            <a href="#">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="layers-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Dashboard Layouts</span>
+                </span>
+            </a>
+            <ul class="yoo-sidebar-nav-dropdown">
+                <li>
+                    <a href="/index.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Default</span>
+                        </span>
+                    </a>
+                </li>
+
+            </ul>
+        </li>
+    </ul><!-- .yoo-sidebar-nav-list -->
+    <div class="yoo-sidebar-nav-title">
+        <span class="yoo-sidebar-nav-title-text">Web Apps</span>
+        <span class="yoo-sidebar-nav-title-dotline"><ion-icon
+                name="ellipsis-horizontal"></ion-icon></span>
+    </div>
+    <ul class="yoo-sidebar-nav-list yoo-mp0">
+        <!-- <li>
+            <a href="/apps-email.html">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="mail-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Email</span>
+                </span>
+            </a>
+        </li> -->
+        <li>
+            <a href="{{url_for('contacts', user_id=current_user.id)}}">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="people-circle-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Contacts</span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/apps-calender.html">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="calendar-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Calendar</span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="{{url_for('transactions', user_id=current_user.id)}}">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="settings-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Transactions</span>
+                </span>
+            </a>
+        </li>
+        <!-- <li>
+            <a href="/apps-messenger.html">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="file-tray-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Messenger</span>
+                </span>
+            </a>
+        </li> -->
+        <!-- <li>
+            <a href="apps-live-chat.html">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="chatbubble-ellipses-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Live Chat</span>
+                </span>
+            </a>
+        </li> -->
+        <!-- <li>
+            <a href="/apps-settings.html">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="settings-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Form Wizard</span>
+                </span>
+            </a>
+        </li> -->
+    </ul><!-- .yoo-sidebar-nav-list -->
+    <!-- <div class="yoo-sidebar-nav-title">
+        <span class="yoo-sidebar-nav-title-text">Pages</span>
+        <span class="yoo-sidebar-nav-title-dotline"><ion-icon
+                name="ellipsis-horizontal"></ion-icon></span>
+    </div>
+    <ul class="yoo-sidebar-nav-list yoo-mp0">
+        <li>
+            <a href="/pages-faq.html">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="albums-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">FAQ</span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a href="/pages-pricing-table.html">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="copy-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Pricing Table</span>
+                </span>
+            </a>
+        </li>
+        <li class="yoo-sidebar-has-children">
+            <a href="#">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="person-circle-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Sign In/Sign Up</span>
+                </span>
+            </a>
+            <ul class="yoo-sidebar-nav-dropdown">
+                <li>
+                    <a href="/pages-login1.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Log In 1</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages-login2.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Log In 2</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages-login3.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Log In 3</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages-login4.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Log In 4</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages-signup1.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Sign Up 1</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages-signup2.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Sign Up 2</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages-signup3.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Sign Up 3</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages-signup4.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Sign Up 4</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="yoo-sidebar-has-children">
+            <a href="#">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="alert-circle-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Error 404</span>
+                </span>
+            </a>
+            <ul class="yoo-sidebar-nav-dropdown">
+                <li>
+                    <a href="/pages-error1.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Error 1</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages-error2.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Error 2</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages-error3.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Error 3</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/pages-error4.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Error 4</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="/pages-svg-maps.html">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="map-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">SVG Maps</span>
+                </span>
+            </a>
+        </li>
+    </ul>.yoo-sidebar-nav-list -->
+    <!-- <div class="yoo-sidebar-nav-title">
+        <span class="yoo-sidebar-nav-title-text">Basic Elements</span>
+        <span class="yoo-sidebar-nav-title-dotline"><ion-icon
+                name="ellipsis-horizontal"></ion-icon></span>
+    </div>
+    <ul class="yoo-sidebar-nav-list yoo-mp0">
+        <li class="yoo-sidebar-has-children">
+            <a href="#">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="folder-open-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">UI Components</span>
+                </span>
+            </a>
+            <ul class="yoo-sidebar-nav-dropdown">
+                <li>
+                    <a href="/ui-alerts.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Alerts</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-badge.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Badge</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-breadcrumb.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Breadcrumb</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-button.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Buttons</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-button-group.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Button group</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-card.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Card</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-carousel.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Carousel</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-collapse.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Collapse</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-dropdowns.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Dropdowns</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-forms.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Forms</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-forms-group.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Input group</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-jumbotron.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Jumbotron</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-list-group.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">List group</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-media-object.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Media object</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-modal.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Modal</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-navs.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Navs</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-navbar.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Navbar</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-pagination.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Pagination</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-popovers.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Popovers</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-progress.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Progress</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-scrollspy.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Scrollspy</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-spinners.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Spinners</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-toasts.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Toasts</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/ui-tooltips.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Tooltips</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="yoo-sidebar-has-children">
+            <a href="#">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="duplicate-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Layout</span>
+                </span>
+            </a>
+            <ul class="yoo-sidebar-nav-dropdown">
+                <li>
+                    <a href="/layout-overview.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Overview</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/layout-grid.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Grid</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/layout-utilities.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Utilities for
+                                layout</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="yoo-sidebar-has-children">
+            <a href="#">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="cloud-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Contents</span>
+                </span>
+            </a>
+            <ul class="yoo-sidebar-nav-dropdown">
+                <li>
+                    <a href="/content-typography.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Typography</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/content-code.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Code</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/content-images.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Images</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/content-tables.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Tables</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/content-figures.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Figures</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li class="yoo-sidebar-has-children">
+            <a href="#">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="cog-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">Utilities</span>
+                </span>
+            </a>
+            <ul class="yoo-sidebar-nav-dropdown">
+                <li>
+                    <a href="/utilities-borders.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Borders</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-close-icon.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Close icon</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-colors.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Colors</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-display.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Display</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-embed.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Embed</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-flex.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Flex</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-overflow.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Overflow</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-shadow.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Shadows</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-sizing.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Sizing</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-spacing.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Spacing</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-stretched-link.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Stretched link</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-text.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Text</span>
+                        </span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/utilities-vertical-align.html">
+                        <span class="yoo-sidebar-link-title">
+                            <span class="yoo-sidebar-link-text">Vertical align</span>
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="/documentation.html">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="reader-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">UI Docs</span>
+                </span>
+            </a>
+        </li>
+        <li>
+            <a target="_blank"
+                href="https://github.com/app-generator/flask-idashboard-pro">
+                <span class="yoo-sidebar-link-title">
+                    <span class="yoo-sidebar-link-icon yoo-style1"><ion-icon
+                            name="reader-outline"></ion-icon></span>
+                    <span class="yoo-sidebar-link-text">App Docs</span>
+                </span>
+            </a>
+        </li>
+    </ul>.yoo-sidebar-nav-list -->
+</div>
