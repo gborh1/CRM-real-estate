@@ -198,12 +198,6 @@ def contact_details(contact_id):
         flash("Access unauthorized.", "danger")
         return redirect("/")
 
-    
-    # ## if current user doesn't match user id then go home. 
-    # user = User.query.get_or_404(user_id)
-    # if g.user != user:
-    #     flash("Access unauthorized.", "danger")
-    #     return redirect("/")
 
     ## if contact isn't the current user's contact, then go home. 
     contact = Contact.query.get_or_404(contact_id)
@@ -211,16 +205,6 @@ def contact_details(contact_id):
         flash("Access unauthorized.", "danger")
         return redirect("/")
 
-    ## this is the form to edit the contact. It appears on a modal
-    ## pre-populate the form with the contact and then save teh contact upon submit
-    # form= ContactForm(obj=contact)
-    # if form.validate_on_submit():
-    #     form.populate_obj(contact)
-    #     db.session.add(contact)
-    #     db.session.commit()
-
-
-    ## Note: need to organize the form on modal. Check for error on client side. Check for error on server side. 
     return render_template('/home/contact_details.html', current_user=g.user, contact=contact)
 
 
@@ -243,47 +227,23 @@ def contact_edit(contact_id):
         flash("Access unauthorized.", "danger")
         return redirect("/")
 
-    if contact._property:
-        # get contact address details
-        address=contact._property.address
-        suite=contact._property.suite
-        city=contact._property.city
-        state=contact._property.state
-        zip_code=contact._property.zip_code
-
-        id= contact._property.id
-        prop = Property.query.get_or_404(id)
-    else:
-        address=None
-        suite=None
-        city=None
-        state=None
-        zip_code=None
-        prop = None
 
     ## pre-populate the form with the contact and then save the contact upon submit
-    form= ContactForm(obj=contact, address=address, suite=suite, city=city, state=state, zip_code=zip_code)
+    form= ContactForm(obj=contact)
     
     ## what follows happens when the form is submitted
     if form.validate_on_submit():
-
-        ## check if address exists. If so, do nothing. If it doesn't, create a new property, and assign it to contact. 
 
         ## adjust certain data types in form to enum
         string_to_enum(form)
         
         form.populate_obj(contact)
         db.session.add(contact)
-        if prop:
-            form.populate_obj(prop)
-            db.session.add(prop)
-
-            ## what happens when the form is submitted but no property is attached to the contact. Get rid of the property connection and just put address with contact.
         db.session.commit()
         return redirect(f'/contacts/{contact_id}')
 
 
-    ## Note: need to organize the form on modal. Check for error on client side. Check for error on server side. 
+    ## Note: Check for error on client side. Check for error on server side. 
     return render_template('/home/contact_edit.html', current_user=g.user, contact=contact, form=form)
 
 @app.route('/users/<int:user_id>/transactions')

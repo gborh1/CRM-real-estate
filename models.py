@@ -173,17 +173,17 @@ class Contact(db.Model):
 
     primary_last_name = db.Column(db.String(50), nullable=False)
 
-    secondary_first_name = db.Column(db.String(50), default=None)
+    secondary_first_name = db.Column(db.String(50))
 
     secondary_last_name = db.Column(db.String(50))
 
-    primary_email = db.Column(db.String(50), default='None')
+    primary_email = db.Column(db.String(50))
 
-    secondary_email = db.Column(db.String(50), default='None')
+    secondary_email = db.Column(db.String(50))
 
-    primary_phone = db.Column(db.String(50), default='None')
+    primary_phone = db.Column(db.String(50))
 
-    secondary_phone = db.Column(db.String(50), default='None')
+    secondary_phone = db.Column(db.String(50))
 
     primary_DOB = db.Column(db.DateTime)
 
@@ -204,25 +204,56 @@ class Contact(db.Model):
         default="/static/assets/avatar_img/andy/1.png"
     )
 
-    property_id = db.Column(
-        db.Integer,
-        db.ForeignKey('properties.id', ondelete='cascade')
-    )
+    address = db.Column(db.Text)
+    suite = db.Column(db.Text)
+    city = db.Column(db.Text)
+    state = db.Column(db.Text)
+    zip_code = db.Column(db.Text)
 
-    _property = db.relationship('Property', backref='contact')
+    # property_id = db.Column(
+    #     db.Integer,
+    #     db.ForeignKey('properties.id', ondelete='cascade')
+    # )
+
+    # _property = db.relationship('Property', backref='contact')
 
     def __repr__(self):
         return f"<Contact {self.primary_first_name}, {self.primary_last_name}>"
 
     def get_address(self):
-        """ get address of the contact if it exists"""
-        if self.property_id:
-            if self._property.suite:
-                return f"{self._property.address}, {self._property.suite}, {self._property.city}, {self._property.state} {self._property.zip_code}"
+        """ Format the contact address into a usable string"""
+        if self.address:
+            if self.suite:
+                return f"{self.address}, {self.suite}, {self.city}, {self.state} {self.zip_code}"
             else:
-                return f"{self._property.address}, {self._property.city}, {self._property.state} {self._property.zip_code}"
+                return f"{self.address}, {self.city}, {self.state} {self.zip_code}"
         else:
             return None
+
+    def get_primary_name(self): 
+        """ Format primary first name and last name to be a usable string"""
+        return f"{self.primary_first_name} {self.primary_last_name}"
+
+    def get_secondary_name(self): 
+        """ Format secondary first name and last name to be a usable string"""
+        first= self.secondary_first_name
+        last=self.secondary_last_name
+        if first and last:
+            return f"{first} {last}"
+        elif first:
+            return first
+        elif last: 
+            return second
+        else:
+            return "None"
+
+    def get_contact_attribute(self, name):
+        """ returns a certain attribute for a contact in string form.  If it doesnt exist, "none" is returned"""
+        attribute=getattr(self, name)
+        if attribute:
+            return attribute
+        else:
+            return "None"
 
     # add Sold or bought former properties.
 

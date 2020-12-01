@@ -141,21 +141,21 @@ def extract_database(user, content):
         #  since The reason there are no address data points in the contact model if we want to create a contact model
         # from the excel sheet, we must remove address-related data points from the converted dict
         # we will use these data points create a new property model. we will use that id as a foreign key to the property model
-        address = data.pop('address', None)
-        suite = data.pop('suite', None)
-        city = data.pop('city', None)
-        state = data.pop('state', None)
-        zip_code = data.pop('zip_code', None)
+        # address = data.pop('address', None)
+        # suite = data.pop('suite', None)
+        # city = data.pop('city', None)
+        # state = data.pop('state', None)
+        # zip_code = data.pop('zip_code', None)
 
-        if address and city and state and zip_code:
+        # if address and city and state and zip_code:
 
-            prop = Property(address=address, suite=suite,
-                            city=city, state=state, zip_code=zip_code)
-            db.session.add(prop)
-            db.session.commit()
-            property_id = prop.id
-        else:
-            property_id = None
+        #     prop = Property(address=address, suite=suite,
+        #                     city=city, state=state, zip_code=zip_code)
+        #     db.session.add(prop)
+        #     db.session.commit()
+        #     property_id = prop.id
+        # else:
+        #     property_id = None
 
         # convert Pandas Timestamp in the converted dict to datetime format
         if data['primary_DOB']:
@@ -175,7 +175,7 @@ def extract_database(user, content):
         url= get_contact_image(name)
 
 
-        contact = Contact(**data, property_id=property_id, image_url=url)
+        contact = Contact(**data, image_url=url)
         user.contacts.append(contact)
         db.session.add(contact)
         db.session.commit()

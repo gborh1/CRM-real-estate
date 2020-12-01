@@ -39,8 +39,8 @@
                                                 alt="">
                                         </div>
                                         <div class="yoo-user-info">
-                                            <h3 class="yoo-user-name">{{contact.primary_first_name}}
-                                                {{contact.primary_last_name}}</h3>
+                                            <h3 class="yoo-user-name">{{contact.get_primary_name()}}
+                                            </h3>
                                             <span class="yoo-lavel">Status:
                                                 <span class="badge
                                                     badge-primary">{{contact.status.value}}</span>
@@ -85,7 +85,7 @@
                                                             col-6 yoo-mp0">Email:</div>
                                                         <div
                                                             class="yoo-contact-info-details
-                                                            col-6 yoo-mp0">{{contact.primary_email}}</div>
+                                                            col-6 yoo-mp0">{{contact.get_contact_attribute('primary_email')}}</div>
                                                     </div>
 
                                                 </li>
@@ -98,7 +98,7 @@
                                                             Number:</div>
                                                         <div
                                                             class="yoo-contact-info-details
-                                                            col-6 yoo-mp0">{{contact.primary_phone}}</div>
+                                                            col-6 yoo-mp0">{{contact.get_contact_attribute('primary_phone')}}</div>
                                                     </div>
 
                                                 </li>
@@ -125,6 +125,8 @@
                                                             class="yoo-contact-info-details
                                                             col-6 yoo-mp0">{%if
                                                             contact.primary_DOB%}{{contact.primary_DOB.strftime("%m/%d/%Y")}}
+                                                            {% else %}
+                                                            {{None}}
                                                             {%endif%}</div>
                                                     </div>
                                                 </li>
@@ -162,8 +164,8 @@
                                                             Contact:</div>
                                                         <div
                                                             class="yoo-contact-info-details
-                                                            col-6 yoo-mp0">{{contact.secondary_first_name}}
-                                                            {{contact.secondary_last_name}}</div>
+                                                            col-6 yoo-mp0">{{contact.get_secondary_name()}}
+                                                        </div>
                                                     </div>
 
                                                 </li>
@@ -176,7 +178,7 @@
                                                             2:</div>
                                                         <div
                                                             class="yoo-contact-info-details
-                                                            col-6 yoo-mp0">{{contact.secondary_email}}</div>
+                                                            col-6 yoo-mp0">{{contact.get_contact_attribute('secondary_email')}}</div>
                                                     </div>
 
                                                 </li>
@@ -190,7 +192,7 @@
                                                             Number 2:</div>
                                                         <div
                                                             class="yoo-contact-info-details
-                                                            col-6 yoo-mp0">{{contact.secondary_phone}}</div>
+                                                            col-6 yoo-mp0">{{contact.get_contact_attribute('secondary_phone')}}</div>
                                                     </div>
 
                                                 </li>
@@ -206,6 +208,8 @@
                                                             class="yoo-contact-info-details
                                                             col-6 yoo-mp0">{%if
                                                             contact.secondary_DOB%}{{contact.secondary_DOB.strftime("%m/%d/%Y")}}
+                                                            {% else %}
+                                                            {{None}}
                                                             {%endif%}</div>
                                                     </div>
                                                 </li>
