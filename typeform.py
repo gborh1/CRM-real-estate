@@ -174,12 +174,14 @@ def extract_database(user, content):
         name = data['primary_first_name']
         url= get_contact_image(name)
 
-
+        ### note: We could check to see if the contact exists in the database before adding a new contact.  But For now we will have duplicate contacts.  
         contact = Contact(**data, image_url=url)
+
+        # add contact and user in user/contact table.
         user.contacts.append(contact)
         db.session.add(contact)
         db.session.commit()
 
-        # add contact and user in user/contact table.
+        
 
         # Put safeguards for when there is bad info entered.

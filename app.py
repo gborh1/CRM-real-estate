@@ -1,11 +1,13 @@
 import os
 
-from flask import Flask, render_template, request, flash, redirect, session, g, url_for, send_file, Response
+from flask import Flask, render_template, request, flash, redirect, session, g, url_for, send_file, Response, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, db, User, Contact, ContactStatus, Stage, Task, Transaction, TransType, MailOptions, Property
 from sqlalchemy.exc import IntegrityError
 from forms import RegisterForm, LoginForm, FeedbackForm, ChangePassword, EmailForm, UploadFileForm, ContactForm
 from io import BytesIO, StringIO
+from sqlalchemy import or_
+
 
 import requests
 from typeform import extract_typeform_answers, extract_database
@@ -66,7 +68,7 @@ def do_logout():
 def home():
     """redirect to signup for now"""
 
-    return render_template('/home/test_home.html', current_user=g.user)
+    return redirect('/login')
 
 
 @app.route('/signup', methods=["GET", "POST"])
@@ -131,8 +133,9 @@ def login():
 
         if user:
             do_login(user)
+            redirect_url = url_for('home_page', user_id=user.id)
             flash(f"Hello, {user.first_name}!", "success")
-            return redirect("/")
+            return redirect(redirect_url)
 
         flash("Invalid credentials. Try again", 'danger')
 
@@ -177,13 +180,21 @@ def typeform_responses():
 @app.route('/users/<int:user_id>')
 def home_page(user_id):
 
+    # check if there is a current paid user. 
+    if g.user:
+        if not g.user.has_paid:
+            return redirect('/payment')
+    else:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
     return render_template('/home/index.html', current_user=g.user)
 
 
 @app.route('/users/<int:user_id>/contacts')
 def contacts(user_id):
 
-    return render_template('/home/contacts2.html', current_user=g.user, random=random_image_selector())
+    return render_template('/home/contacts.html', current_user=g.user, random=random_image_selector())
 
 
 @app.route('/contacts/<int:contact_id>')
@@ -279,6 +290,62 @@ def calculation(n):
         y = y+x
 
     return y
+
+
+
+#################################################
+#Restful APIs
+#################################################
+
+## add api/contacts
+    ## have conditions for searching for contacts. Note you may have to research taking more than two conditions
+    ## serialize the contacts. 
+    ## return jsonified version of the search 
+
+
+@app.route('/api/contacts')
+def list_contacts():
+    """Returns JSON w/ all requested contacts"""
+
+    print('####################')
+    print('yeah!!!!!!!!!')
+    search = request.args.get("search")
+
+
+
+    ## search conditions for the Contact models. These will allow database lookup for each listed element. 
+
+    p_f_name = Contact.primary_first_name.ilike(f'%{search}%')
+    p_l_name= Contact.primary_last_name.ilike(f'%{search}%')
+    s_f_name = Contact.secondary_first_name.ilike(f'%{search}%')
+    s_l_name= Contact.secondary_last_name.ilike(f'%{search}%')
+    p_email = Contact.primary_email.ilike(f'%{search}%')
+    s_email= Contact.secondary_email.ilike(f'%{search}%')
+    p_phone = Contact.primary_phone.ilike(f'%{search}%')
+    s_phone= Contact.secondary_phone.ilike(f'%{search}%')
+    notes = Contact.notes.ilike(f'%{search}%')
+    address = Contact.address.ilike(f'%{search}%')
+    suite = Contact.suite.ilike(f'%{search}%')
+    city = Contact.city.ilike(f'%{search}%')
+    state = Contact.state.ilike(f'%{search}%')
+    zip_code = Contact.notes.ilike(f'%{search}%')
+    conditions = [p_f_name, p_l_name, s_f_name, s_l_name, p_email, s_email, p_phone, s_phone, notes, address, suite, city, state, zip_code]
+
+    print('********************')
+    print(conditions)
+ 
+
+    if search: 
+        contacts= Contact.query.filter(or_ (*conditions))
+        all_contacts = [contact.serialize() for contact in contacts]
+    else:
+        all_contacts = [contact.serialize() for contact in Contact.query.all()]
+
+    return jsonify(contacts=all_contacts)
+
+## Within the serialize method for the contact model, define the various attributes by calling methods. Then add it in the serialized object. 
+  ## This way you can pass 'none' on through the api if there is no value given. 
+## copy the javascript from cupcakes.js and create a show contacts function
 
 
 ####### Add db.create_all() to the beginning of this#######

@@ -210,12 +210,47 @@ class Contact(db.Model):
     state = db.Column(db.Text)
     zip_code = db.Column(db.Text)
 
-    # property_id = db.Column(
-    #     db.Integer,
-    #     db.ForeignKey('properties.id', ondelete='cascade')
-    # )
+    tags = db.relationship(
+        'Tag',
+        secondary="contacts_tags", backref= 'contacts'
+    )
 
-    # _property = db.relationship('Property', backref='contact')
+    def serialize(self, attr=None):
+        """Returns a dict representation of Contact which we can turn into JSON. Excludes mail preference, and status"""
+        return {
+            'id': self.id,
+            'primary_first_name': self.get_contact_attribute('primary_first_name'),
+            'primary_last_name': self.get_contact_attribute('primary_last_name'),
+            'secondary_first_name': self.get_contact_attribute('secondary_first_name'),
+            'secondary_last_name': self.get_contact_attribute('secondary_last_name'),
+            'primary_email': self.get_contact_attribute('primary_email'), 
+            'secondary_email': self.get_contact_attribute('secondary_email'),
+            'primary_phone': self.get_contact_attribute('primary_phone'),
+            'secondary_phone': self.get_contact_attribute('secondary_phone'),
+            'primary_DOB': self.get_contact_attribute('primary_DOB'),
+            'secondary_DOB': self.get_contact_attribute('secondary_DOB'),
+            'past_client': self.get_contact_attribute('past_client'),
+            'notes': self.get_contact_attribute('notes'),
+            'image_url': self.get_contact_attribute('image_url'),
+            'address': self.get_contact_attribute('address'),
+            'suite': self.get_contact_attribute('suite'),
+            'city': self.get_contact_attribute('city'),
+            'state': self.get_contact_attribute('state'),
+            'zip_code': self.get_contact_attribute('zip_code'),
+            'tags': self.get_contact_attribute('tags'),
+            'image_url': self.image_url,
+            'get_address': self.get_address(),
+            'get_primary_name': self.get_primary_name(),
+            'get_seondary_name': self.get_secondary_name()
+            
+        }
+
+    def __repr__(self):
+        return f"<Contact {self.id} first_name ={self.primary_first_name} last_name ={self.primary_last_name}>"
+
+    # visible = db.Column(db.Boolean, nullable=False, default=True)
+
+
 
     def __repr__(self):
         return f"<Contact {self.primary_first_name}, {self.primary_last_name}>"
@@ -228,7 +263,7 @@ class Contact(db.Model):
             else:
                 return f"{self.address}, {self.city}, {self.state} {self.zip_code}"
         else:
-            return None
+            return "None"
 
     def get_primary_name(self): 
         """ Format primary first name and last name to be a usable string"""
@@ -365,3 +400,31 @@ class Task(db.Model):
     )
 
     stage = db.relationship('Stage', backref='tasks')
+
+
+class Tag(db.Model): 
+    """ Tag model for tagging contacts"""
+
+    __tablename__ = 'tags'
+
+    id= db.Column(db.Integer, primary_key=True, autoincrement=True)
+
+    name = db.Column(db.String(30), nullable=False)
+
+    def __repr__(self):
+        t= self
+        return f"<Tag id={t.id} name={t.name}>"
+
+
+class ContactTag(db.Model):
+    """ Contact_Tag model for Jane Rothe app"""
+
+    __tablename__ = 'contacts_tags'
+
+    contact_id = db.Column(db.Integer, db.ForeignKey('contacts.id', ondelete="cascade"), nullable=False, primary_key=True)
+    
+    tag_id = db.Column(db.Integer, db.ForeignKey('tags.id', ondelete="cascade"), nullable=False, primary_key=True)
+
+    def __repr__(self):
+        c= self
+        return f"<Contact_tag contact_id={c.contact_id} tag_id= {c.tag_id}>"
