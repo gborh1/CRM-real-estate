@@ -26,6 +26,8 @@ $(document).ready(function() {
 		let search = $('#contact-search').val();
 
 		show_contacts(search);
+
+		console.log('whats happening');
 	});
 
 	/** This prevents the submission of the form if user hits enter */
@@ -46,7 +48,7 @@ $(document).ready(function() {
 		for (contact of response.data.contacts) {
 			$('#contact-list').append(
 				`<div class="col mb-4">
-                <div class="card h-100 profile_view">
+                <div class="card h-100 profile_view d-flex flex-column justfify-content-between">
                     <div class="text-center">
                         <img
                             src=${contact.image_url}
@@ -77,7 +79,7 @@ $(document).ready(function() {
                         <div class="col-xs-12 col-sm-12 d-flex
                             justify-content-between">
                             <button type="button" class="btn
-                                btn-outline-danger btn-xs">
+                                btn-outline-danger btn-xs" data-toggle="modal" data-target="#deleteModal" data-contact="${contact.id}">
                                 <i class="fas fa-trash-alt"></i>
                                 <small>delete</small>
 
@@ -95,4 +97,25 @@ $(document).ready(function() {
 			);
 		}
 	}
+
+	/**  *************************** */
+	// This is the beginning of the Contact modal code.  This is supposed to pass on the id of contact
+	/** ************************** */
+
+	$('#deleteModal').on('show.bs.modal', function(event) {
+		let button = $(event.relatedTarget); // Button that triggered the modal
+		let contact_id = button.data('contact'); // Extract info from data-* attributes
+		// If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+		// Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+
+		// html =
+		// 	"<a href='{{url_for('delete_contact', contact_id=contact.id)}}' type='button' class='btn btn-danger'>Delete</a>";
+
+		console.log(contact_id);
+
+		$('#finalContactDelete').attr('action', `/contacts/${contact_id}/delete`);
+		// var modal = $(this);
+		// modal.find('.modal-title').text('New message to ' + recipient);
+		// modal.find('.modal-body input').val(recipient);
+	});
 });

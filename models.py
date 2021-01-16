@@ -26,10 +26,11 @@ class TransStatus(enum.Enum):
 
 
 class ContactStatus(enum.Enum):
+    inactive = "Inactive"
     seller = "Seller"
     buyer = "Buyer"
     both = "Buyer & Seller"
-    inactive = "Inactive"
+    
 
 
 class TransType(enum.Enum):
@@ -98,7 +99,7 @@ class User(db.Model):
     # creating a connection user object and
     contacts = db.relationship(
         'Contact',
-        secondary="users_contacts"
+        secondary="users_contacts", backref= 'users'
     )
 
     def __repr__(self):
@@ -210,6 +211,8 @@ class Contact(db.Model):
     state = db.Column(db.Text)
     zip_code = db.Column(db.Text)
 
+    is_visible = db.Column(db.Boolean, nullable=False, default=True)
+
     tags = db.relationship(
         'Tag',
         secondary="contacts_tags", backref= 'contacts'
@@ -248,7 +251,7 @@ class Contact(db.Model):
     def __repr__(self):
         return f"<Contact {self.id} first_name ={self.primary_first_name} last_name ={self.primary_last_name}>"
 
-    # visible = db.Column(db.Boolean, nullable=False, default=True)
+    
 
 
 

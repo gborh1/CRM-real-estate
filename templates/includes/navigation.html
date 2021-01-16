@@ -2,8 +2,8 @@
   <div class="yoo-main-header">
     <div class="yoo-main-header-in">
       <div class="yoo-main-header-left">
-        <a href="/" class="yoo-logo-link yoo-light-logo"><img
-            src="/static/assets/img/jr/jane_black_logo.png" alt="logo-light" /></a>
+        <a href="/" class="yoo-logo-link yoo-light-logo"><img 
+            src="/static/assets/img/jr/just_jane_logo.png" class="" alt="logo-light" /></a>
         <!-- For Site Title -->
         <!-- <span class="yoo-site-title">
             <a href="index.html">Logo</a>
@@ -11,10 +11,10 @@
       </div>
       <div class="yoo-main-header-right">
         <div class="yoo-nav-wrap yoo-fade-up">
-          <div class="yoo-nav-toggle">
+          <!-- <div class="yoo-nav-toggle">
             <ion-icon name="ellipsis-vertical"></ion-icon>
-          </div>
-          <nav class="yoo-nav yoo-desktop-nav">
+          </div> -->
+          <!-- <nav class="yoo-nav yoo-desktop-nav">
             <ul class="yoo-nav-list">
               <li class="yoo-has-children">
                 <a href="#"><ion-icon name="albums"></ion-icon> Icons</a>
@@ -177,12 +177,12 @@
                 </div>
               </li>
             </ul>
-          </nav>
+          </nav> -->
           <!-- .yoo-nav -->
         </div>
         <!-- .yoo-nav-wrap -->
         <ul class="yoo-ex-nav yoo-style1 yoo-flex yoo-mp0">
-          <li>
+          <!-- <li>
             <div class="yoo-toggle-body yoo-message-area yoo-style1">
               <span class="yoo-toggle-btn yoo-ex-nav-btn yoo-message-btn">
                 <ion-icon name="mail"></ion-icon>
@@ -447,17 +447,19 @@
               </div>
             </div>
           </li>
-          <li>
+          <li> -->
             <div class="yoo-toggle-body yoo-profile-nav yoo-style1">
               <div class="yoo-toggle-btn yoo-profile-nav-btn">
                 <div class="yoo-profile-nav-text">
                   <span>Welcome,</span>
                   <h4>
-                    {{ current_user.first_name }}
+                    {{ current_user.first_name.capitalize() }}
                   </h4>
                 </div>
-                <div class="yoo-profile-nav-img">
-                  <img src="/static/assets/img/profile-pic.png" alt="profile">
+                <div class="yoo-profile-nav-img bg-success d-flex justify-content-center align-items-center text-white"> 
+                  <span> <b>{{ current_user.first_name[0].capitalize() }}</b> </span>
+                    <!-- <H2>G</H2> -->
+                  <!-- <img src="/static/assets/img/profile-pic.png" alt="profile"> -->
                 </div>
               </div>
               <ul class="yoo-dropdown yoo-style1">

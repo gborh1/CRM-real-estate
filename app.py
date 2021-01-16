@@ -7,6 +7,7 @@ from sqlalchemy.exc import IntegrityError
 from forms import RegisterForm, LoginForm, FeedbackForm, ChangePassword, EmailForm, UploadFileForm, ContactForm
 from io import BytesIO, StringIO
 from sqlalchemy import or_
+from helper import get_contact_image
 
 
 import requests
@@ -191,10 +192,45 @@ def home_page(user_id):
     return render_template('/home/index.html', current_user=g.user)
 
 
-@app.route('/users/<int:user_id>/contacts')
-def contacts(user_id):
+########################### Contact Routes#############################################
 
-    return render_template('/home/contacts.html', current_user=g.user, random=random_image_selector())
+@app.route('/users/<int:user_id>/contacts', methods=["GET", "POST"])
+def contacts(user_id):
+    """ route for seeing and manipulate user's content user's contacts.  """
+
+    # check if there is a current paid user. 
+    if g.user:
+        if not g.user.has_paid:
+            return redirect('/payment')
+    else:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    ## pre-populate the form with the contact and then save the contact upon submit
+    form= ContactForm()
+
+    ## what follows happens when the form is submitted
+    if form.validate_on_submit():
+
+        contact = Contact()
+
+        ## get random avatar picture for each contact
+        name = form.primary_first_name.data
+        url= get_contact_image(name)
+        contact.image_url= url
+
+        ## adjust certain data types in form to enum
+        string_to_enum(form)
+        
+        form.populate_obj(contact)
+        db.session.add(contact)
+        db.session.commit()
+        return redirect (url_for('contacts', user_id=user_id))
+
+    return render_template('/home/contacts.html', current_user=g.user, form=form)
+
+
+
 
 
 @app.route('/contacts/<int:contact_id>')
@@ -256,6 +292,36 @@ def contact_edit(contact_id):
 
     ## Note: Check for error on client side. Check for error on server side. 
     return render_template('/home/contact_edit.html', current_user=g.user, contact=contact, form=form)
+
+@app.route('/contacts/<int:contact_id>/delete', methods=["POST"])
+def delete_contact(contact_id):
+    """Delete a contact."""
+
+    # check if there is a current paid user. 
+    if g.user:
+        if not g.user.has_paid:
+            return redirect('/payment')
+    else:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    ## if contact isn't the current user's contact, then go home. 
+    contact = Contact.query.get_or_404(contact_id)
+    if contact not in g.user.contacts:
+        flash("Access unauthorized.", "danger")
+        return redirect("/")
+
+    contact.is_visible = False;
+
+    db.session.add(contact)
+    db.session.commit()
+
+    redirect_url = url_for('contacts', user_id=g.user.id)
+
+    return redirect(redirect_url)
+
+
+########################### Transaction Routes#############################################
 
 @app.route('/users/<int:user_id>/transactions')
 def transactions(user_id):
@@ -329,6 +395,7 @@ def list_contacts():
     city = Contact.city.ilike(f'%{search}%')
     state = Contact.state.ilike(f'%{search}%')
     zip_code = Contact.notes.ilike(f'%{search}%')
+    is_visible = Contact.is_visible.is_(True)
     conditions = [p_f_name, p_l_name, s_f_name, s_l_name, p_email, s_email, p_phone, s_phone, notes, address, suite, city, state, zip_code]
 
     print('********************')
@@ -336,10 +403,11 @@ def list_contacts():
  
 
     if search: 
-        contacts= Contact.query.filter(or_ (*conditions))
+        contacts= Contact.query.filter(or_ (*conditions)).filter(is_visible)
         all_contacts = [contact.serialize() for contact in contacts]
     else:
-        all_contacts = [contact.serialize() for contact in Contact.query.all()]
+        contacts= Contact.query.filter(is_visible)
+        all_contacts = [contact.serialize() for contact in contacts]
 
     return jsonify(contacts=all_contacts)
 

@@ -57,9 +57,9 @@ def validate_phone(self, phone):
 
 class ContactForm(FlaskForm):
     """ form for user's contacts"""
-    primary_first_name = StringField("Primary First Name", validators=[InputRequired(), Length(max=50, message= "This input should be max 50 characters")])
+    primary_first_name = StringField("Primary First Name", validators=[InputRequired(message="this field is required"), Length(max=50, message= "This input should be max 50 characters")])
 
-    primary_last_name = StringField("Primary Last Name", validators=[InputRequired(), Length(max=50, message= "This input should be max 50 characters")])
+    primary_last_name = StringField("Primary Last Name", validators=[InputRequired(message="this field is required"), Length(max=50, message= "This input should be max 50 characters")])
 
     secondary_first_name = StringField("Secondary First Name", validators=[Length(max=50, message= "This input should be max 50 characters")])
 
