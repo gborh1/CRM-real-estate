@@ -40,7 +40,15 @@
         <!-- SideBar -->
         {% include 'includes/sidebar.html' %}
 
-        {% block content %}{% endblock content %}
+        {% for category, message in
+        get_flashed_messages(with_categories=True) %}
+        <div class="alert alert-{{ category }} text-center">{{
+            message }}</div>
+        {% endfor %}
+
+        {% block content %}
+
+        {% endblock content %}
 
         <!-- Required Scripts -->
 

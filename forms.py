@@ -97,16 +97,24 @@ class ContactForm(FlaskForm):
 
 
 
+class UserForm(FlaskForm):
+    """ form for user profile information"""
+
+    first_name = StringField("First Name", validators=[InputRequired(message="this field is required"), Length(max=50, message= "This input should be max 50 characters")], id= 'first_name')
+    last_name = StringField("Last Name", validators=[InputRequired(message="this field is required"), Length(max=50, message= "This input should be max 50 characters")], id= 'last_name')
+    designation = StringField("Designation", validators=[Length(max=50, message= "This input should be max 50 characters")], id= 'designation')
+    certifications = StringField("Certification", validators=[Length(max=50, message= "This input should be max 50 characters")], id= 'certification')
+    dre_num = StringField("DRE number", validators=[Length(max=50, message= "This input should be max 50 characters")], id= 'license')
+    phone_num = StringField("Phone", [Optional(), validate_phone, Length(max=50, message= "This input should be max 50 characters")], id= 'phone')
+    agent_email = StringField("Email", validators=[Optional(), Email(), Length(max=50, message= "This input should be max 50 characters")], id= 'email')
+    mls_info = StringField("MLS association & Agent ID", validators=[Length(max=50, message= "This input should be max 50 characters")], id= 'agent_id')
+    tagline = StringField("Tagline", validators=[Length(max=50, message= "This input should be max 50 characters")], id= 'tagline')
+    
     
 
     
-
-    
-
-
-
-#  Test form for uploading file.
 class UploadFileForm(FlaskForm):
+    """field for uploading files"""
     file = FileField('File', validators=[
                      FileRequired(), FileAllowed(['csv', 'pdf', 'xlsx'], 'csv only!')])
     submit = SubmitField('Submit')

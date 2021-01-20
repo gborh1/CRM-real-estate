@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, flash, redirect, session, g, 
 from flask_debugtoolbar import DebugToolbarExtension
 from models import connect_db, db, User, Contact, ContactStatus, Stage, Task, Transaction, TransType, MailOptions, Property
 from sqlalchemy.exc import IntegrityError
-from forms import RegisterForm, LoginForm, FeedbackForm, ChangePassword, EmailForm, UploadFileForm, ContactForm
+from forms import RegisterForm, LoginForm, FeedbackForm, ChangePassword, EmailForm, UploadFileForm, ContactForm, UserForm
 from io import BytesIO, StringIO
 from sqlalchemy import or_
 from helper import get_contact_image
@@ -35,6 +35,8 @@ app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "it's a secret")
 toolbar = DebugToolbarExtension(app)
 
 connect_db(app)
+
+db.create_all()
 
 
 ##############################################################################
@@ -67,7 +69,7 @@ def do_logout():
 
 @app.route('/')
 def home():
-    """redirect to signup for now"""
+    """redirect to login for now"""
 
     return redirect('/login')
 
@@ -85,13 +87,11 @@ def signup():
     """
 
     if g.user:
-        if g.user.has_paid:
-            return redirect(f"/users/{g.user.id}")
-        else:
-            return redirect('/payment')
-    # else:
-    #     flash("Access unauthorized.", "danger")
-    #     return redirect("/")
+        # if g.user.has_paid:
+        return (url_for('contacts', user_id=g.user.id))
+        # else:
+        #     return redirect('/payment')
+    
 
     form = RegisterForm()
 
@@ -125,6 +125,8 @@ def signup():
 @app.route('/login', methods=["GET", "POST"])
 def login():
     """Handle user login."""
+    if g.user:
+        return redirect(url_for('contacts', user_id=g.user.id))
 
     form = LoginForm()
 
@@ -180,6 +182,22 @@ def typeform_responses():
 
 @app.route('/users/<int:user_id>')
 def home_page(user_id):
+    """ route for determined home page for user. for not it redirects to contacts"""
+
+    # check if there is a current paid user. 
+    if g.user:
+        if not g.user.has_paid:
+            return redirect('/payment')
+    else:
+        flash("Access unauthorized.", "danger")
+        return redirect("/login")
+
+    return redirect(url_for('contacts', user_id=user_id))
+
+
+@app.route('/users/<int:user_id>/settings',methods=["GET", "POST"])
+def user_settings(user_id):
+    """ route for displaying user settings"""
 
     # check if there is a current paid user. 
     if g.user:
@@ -189,8 +207,25 @@ def home_page(user_id):
         flash("Access unauthorized.", "danger")
         return redirect("/")
 
-    return render_template('/home/index.html', current_user=g.user)
+    user = User.query.get_or_404(user_id)
+    ## pre-populate the form with the user infor and then save the user info upon submit
+    form= UserForm(obj=user)
+    
+    ## what follows happens when the form is submitted
+    if form.validate_on_submit():
+        
+        form.populate_obj(user)
+        db.session.add(user)
+        db.session.commit()
+        return redirect( url_for('user_settings', user_id=user_id))
 
+    return render_template('/home/settings.html', current_user=g.user, form=form)
+
+@app.route('/payment')
+def payment():
+    """route for displaying user payment page"""
+
+    return render_template('/home/payment.html')
 
 ########################### Contact Routes#############################################
 
@@ -204,7 +239,7 @@ def contacts(user_id):
             return redirect('/payment')
     else:
         flash("Access unauthorized.", "danger")
-        return redirect("/")
+        return redirect("/login")
 
     ## pre-populate the form with the contact and then save the contact upon submit
     form= ContactForm()
@@ -231,8 +266,6 @@ def contacts(user_id):
 
 
 
-
-
 @app.route('/contacts/<int:contact_id>')
 def contact_details(contact_id):
     """ route for showing the details of the contact"""
@@ -243,7 +276,7 @@ def contact_details(contact_id):
             return redirect('/payment')
     else:
         flash("Access unauthorized.", "danger")
-        return redirect("/")
+        return redirect("/login")
 
 
     ## if contact isn't the current user's contact, then go home. 
@@ -265,14 +298,14 @@ def contact_edit(contact_id):
             return redirect('/payment')
     else:
         flash("Access unauthorized.", "danger")
-        return redirect("/")
+        return redirect("/login")
 
 
     ## if contact isn't the current user's contact, then go home. 
     contact = Contact.query.get_or_404(contact_id)
     if contact not in g.user.contacts:
         flash("Access unauthorized.", "danger")
-        return redirect("/")
+        return redirect("/login")
 
 
     ## pre-populate the form with the contact and then save the contact upon submit
@@ -303,13 +336,13 @@ def delete_contact(contact_id):
             return redirect('/payment')
     else:
         flash("Access unauthorized.", "danger")
-        return redirect("/")
+        return redirect("/login")
 
     ## if contact isn't the current user's contact, then go home. 
     contact = Contact.query.get_or_404(contact_id)
     if contact not in g.user.contacts:
         flash("Access unauthorized.", "danger")
-        return redirect("/")
+        return redirect("/login")
 
     contact.is_visible = False;
 
@@ -349,32 +382,16 @@ def string_to_enum(form):
 
     ## Parse the numbers and put them in regularly.
 
-    
-def calculation(n):
-    y = 0
-    for x in range(n):
-        y = y+x
-
-    return y
-
 
 
 #################################################
 #Restful APIs
 #################################################
 
-## add api/contacts
-    ## have conditions for searching for contacts. Note you may have to research taking more than two conditions
-    ## serialize the contacts. 
-    ## return jsonified version of the search 
-
 
 @app.route('/api/contacts')
 def list_contacts():
     """Returns JSON w/ all requested contacts"""
-
-    print('####################')
-    print('yeah!!!!!!!!!')
     search = request.args.get("search")
 
 
@@ -397,9 +414,6 @@ def list_contacts():
     zip_code = Contact.notes.ilike(f'%{search}%')
     is_visible = Contact.is_visible.is_(True)
     conditions = [p_f_name, p_l_name, s_f_name, s_l_name, p_email, s_email, p_phone, s_phone, notes, address, suite, city, state, zip_code]
-
-    print('********************')
-    print(conditions)
  
 
     if search: 
@@ -410,10 +424,3 @@ def list_contacts():
         all_contacts = [contact.serialize() for contact in contacts]
 
     return jsonify(contacts=all_contacts)
-
-## Within the serialize method for the contact model, define the various attributes by calling methods. Then add it in the serialized object. 
-  ## This way you can pass 'none' on through the api if there is no value given. 
-## copy the javascript from cupcakes.js and create a show contacts function
-
-
-####### Add db.create_all() to the beginning of this#######

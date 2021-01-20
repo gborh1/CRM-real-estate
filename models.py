@@ -251,13 +251,6 @@ class Contact(db.Model):
     def __repr__(self):
         return f"<Contact {self.id} first_name ={self.primary_first_name} last_name ={self.primary_last_name}>"
 
-    
-
-
-
-    def __repr__(self):
-        return f"<Contact {self.primary_first_name}, {self.primary_last_name}>"
-
     def get_address(self):
         """ Format the contact address into a usable string"""
         if self.address:

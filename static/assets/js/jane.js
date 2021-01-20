@@ -118,4 +118,36 @@ $(document).ready(function() {
 		// modal.find('.modal-title').text('New message to ' + recipient);
 		// modal.find('.modal-body input').val(recipient);
 	});
+
+	/**  *************************** */
+	// This is the beginning of the Profile page Code.  It allows for the form to toggle from read only to editable.
+	/** ************************** */
+
+	/** this hides the save button  */
+
+	$('#profile-save').hide();
+
+	/** this adds an Id to the profile form, and then uses that ID to disable all inputs in form when Dom is loaded. 
+     * Note: one of the fields is used to identify the form as a parent and add the ID. It would be preferable to add and ID to form upon creation. 
+    */
+	$('#first_name').parents('form').attr('id', 'profile-form');
+	$('#profile-form').find('input').prop('disabled', true);
+
+	/** this event handler handles what happens when the save button is clicked. The save button is hidden, and the edit button is shown.  */
+	$('#profile-save').on('click', async function(e) {
+		$('#profile-edit').toggle();
+		$(this).toggle();
+
+		console.log('is this working');
+	});
+
+	/** this event handler handles what happens when the edit button is clicked. The edit button is hidden, and the save button is shown. The inputs in the form are enabled.   */
+	$('#profile-edit').on('click', async function(e) {
+		$('#profile-save').toggle();
+		$(this).toggle();
+
+		$('#profile-form').find('input').css('background-color', 'white').prop('disabled', false);
+
+		console.log('is this working great');
+	});
 });

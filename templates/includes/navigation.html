@@ -3,7 +3,7 @@
     <div class="yoo-main-header-in">
       <div class="yoo-main-header-left">
         <a href="/" class="yoo-logo-link yoo-light-logo"><img 
-            src="/static/assets/img/jr/just_jane_logo.png" class="" alt="logo-light" /></a>
+            src="/static/assets/img/jr/just_jane_white_logo.png" class="" alt="logo-light" /></a>
         <!-- For Site Title -->
         <!-- <span class="yoo-site-title">
             <a href="index.html">Logo</a>
@@ -464,12 +464,8 @@
               </div>
               <ul class="yoo-dropdown yoo-style1">
                 <li>
-                  <a href="/apps-settings.html"><ion-icon name="person-circle"></ion-icon>My
+                  <a href="{{url_for('user_settings', user_id=current_user.id)}}"><ion-icon name="person-circle"></ion-icon>My
                     Profile</a>
-                </li>
-                <li>
-                  <a target="_blank" href="https://appseed.us/support">
-                    <ion-icon name="help-circle"></ion-icon>Get Support</a>
                 </li>
                 <li class="yoo-dropdown-cta">
                   <a href={{ url_for('logout') }}>Sign Out</a>
