@@ -158,7 +158,6 @@ def logout():
 @app.route('/onboard')
 def onboard():
     """renders a page with typeform embedded to gather initial user information"""
-    flash('welcome to your new home')
 
     return render_template('/accounts/onboard.html')
 
