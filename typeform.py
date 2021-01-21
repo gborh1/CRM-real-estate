@@ -127,13 +127,6 @@ def extract_database(user, content):
     """ extract contacts from excel file and save as individual contacts"""
 
 
-    print('&&&&&&&&&&&&&&&&')
-    print(user)
-    print('this is working fine')
-    print('&&&&&&&&&&&&&&&&')
-    print('&&&&&&&&&&&&&&&&')
-    print('&&&&&&&&&&&&&&&&')
-
     # read bynary as a pandas object
     df = pd.read_excel(content)
 

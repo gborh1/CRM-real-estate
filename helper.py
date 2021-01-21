@@ -19,12 +19,12 @@ def get_contact_image(name):
     g= d.get_gender(name)
     if g == "male":
         num=random.randrange(3, 11)
-        link= f"/static/assets/avatar_img/male/{num}.png"
+        link= f"/static/avatar_img/male/{num}.png"
     elif g== 'female':
         num=random.randrange(11, 21)
-        link= f"/static/assets/avatar_img/female/{num}.png"
+        link= f"/static/avatar_img/female/{num}.png"
     else:
         num=random.randrange(1, 3)
-        link= f"/static/assets/avatar_img/andy/{num}.png"
+        link= f"/static/avatar_img/andy/{num}.png"
 
     return link
