@@ -1,15 +1,25 @@
 $(document).ready(function() {
+	/**  ************************************************************************************* */
+	// This is the beginning of the contact page code.  It allows for contact to be populated and searched throught hte DOM
+	/** *************************************************************************************** */
+
+	// this gets the user id data passed to this field, which is just id of the player in memory.
+	const user_id = $('#contact-list').data('user-id');
+
+	console.log(user_id);
+
 	/** call show_contacts withouth a search argument so show all contacts immediately.  */
-	show_contacts();
+	show_contacts(user_id);
 
 	/** function for retrieving contacts from api through ajax. 
      * takes a search argument in case the results need to be filtered. 
      */
-	async function get_contacts(search = undefined) {
-		console.log('please come');
+	async function get_contacts(id, search = undefined) {
+		console.log('get contacts');
 		const response = await axios.get('/api/contacts', {
 			params : {
-				search : search
+				search     : search,
+				contact_id : id
 			}
 		});
 
@@ -25,7 +35,7 @@ $(document).ready(function() {
 
 		let search = $('#contact-search').val();
 
-		show_contacts(search);
+		show_contacts(user_id, search);
 
 		console.log('whats happening');
 	});
@@ -39,10 +49,10 @@ $(document).ready(function() {
      * Takes a search argument in case results need to be filtered.
     */
 
-	async function show_contacts(search = undefined) {
-		response = await get_contacts(search);
+	async function show_contacts(id, search = undefined) {
+		response = await get_contacts(id, search);
 
-		console.log(response);
+		console.log('show contacts');
 		$('#contact-list').empty();
 
 		for (contact of response.data.contacts) {

@@ -6,7 +6,7 @@ from models import connect_db, db, User, Contact, ContactStatus, Stage, Task, Tr
 from sqlalchemy.exc import IntegrityError
 from forms import RegisterForm, LoginForm, FeedbackForm, ChangePassword, EmailForm, UploadFileForm, ContactForm, UserForm
 from io import BytesIO, StringIO
-from sqlalchemy import or_
+from sqlalchemy import or_, desc, asc
 from helper import get_contact_image
 
 
@@ -28,7 +28,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = (
     os.environ.get('DATABASE_URL', 'postgres:///jane'))
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
-app.config['SQLALCHEMY_ECHO'] = True
+app.config['SQLALCHEMY_ECHO'] = False
 app.config['DEBUG_TB_INTERCEPT_REDIRECTS'] = False
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', "it's a secret")
 
@@ -88,7 +88,7 @@ def signup():
 
     if g.user:
         # if g.user.has_paid:
-        return (url_for('contacts', user_id=g.user.id))
+        return redirect (url_for('contacts', user_id=g.user.id))
         # else:
         #     return redirect('/payment')
     
@@ -100,7 +100,7 @@ def signup():
         email = form.email.data
         pwd = form.password.data
 
-        # these will be checked against data coming from typeform so make sure everyting is lowercased
+        # these will be checked against data coming from typeform so make sure everything is lowercased
         first_name = form.first_name.data.lower()
         last_name = form.last_name.data.lower()
 
@@ -112,7 +112,7 @@ def signup():
         except IntegrityError:
             form.email.errors.append(
                 'This email has already been registered. Please pick another')
-            return render_template('register.html', form=form)
+            return render_template('accounts/register.html', form=form)
 
         do_login(user)
         flash("welcome! Successfully Created Your Account!", "success")
@@ -393,6 +393,9 @@ def string_to_enum(form):
 def list_contacts():
     """Returns JSON w/ all requested contacts"""
     search = request.args.get("search")
+    contact_id = request.args.get("contact_id")
+
+    user=User.query.get_or_404(contact_id)
 
 
 
@@ -413,14 +416,15 @@ def list_contacts():
     state = Contact.state.ilike(f'%{search}%')
     zip_code = Contact.notes.ilike(f'%{search}%')
     is_visible = Contact.is_visible.is_(True)
+    # in_user_contacts = Contact.in_(user.contacts)
     conditions = [p_f_name, p_l_name, s_f_name, s_l_name, p_email, s_email, p_phone, s_phone, notes, address, suite, city, state, zip_code]
  
 
     if search: 
-        contacts= Contact.query.filter(or_ (*conditions)).filter(is_visible)
-        all_contacts = [contact.serialize() for contact in contacts]
+        contacts= Contact.query.filter(or_ (*conditions)).filter(is_visible).order_by(asc('primary_last_name'))
+        all_contacts = [contact.serialize() for contact in contacts if contact in user.contacts]
     else:
-        contacts= Contact.query.filter(is_visible)
-        all_contacts = [contact.serialize() for contact in contacts]
+        contacts= Contact.query.filter(is_visible).order_by(asc('primary_last_name'))
+        all_contacts = [contact.serialize() for contact in contacts if contact in user.contacts]
 
     return jsonify(contacts=all_contacts)

@@ -24,6 +24,8 @@ def extract_typeform_answers(answers):
         last_name=last_name).first()
 
     if user:
+        print('*****************')
+        print('we found this user')
         for answer in answers:
 
             if answer['field']['ref'] == 'designation':
@@ -36,10 +38,10 @@ def extract_typeform_answers(answers):
                 text = answer['text']
                 user.dre_num = text
             if answer['field']['ref'] == 'phone_num':
-                text = answer['text']
+                text = answer['phone_number']
                 user.phone_num = text
             if answer['field']['ref'] == 'agent_email':
-                text = answer['text']
+                text = answer['email']
                 user.agent_email = text
             if answer['field']['ref'] == 'office_address':
                 text = answer['text']
@@ -123,6 +125,14 @@ def extract_typeform_answers(answers):
 
 def extract_database(user, content):
     """ extract contacts from excel file and save as individual contacts"""
+
+
+    print('&&&&&&&&&&&&&&&&')
+    print(user)
+    print('this is working fine')
+    print('&&&&&&&&&&&&&&&&')
+    print('&&&&&&&&&&&&&&&&')
+    print('&&&&&&&&&&&&&&&&')
 
     # read bynary as a pandas object
     df = pd.read_excel(content)
