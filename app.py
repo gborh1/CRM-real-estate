@@ -2,7 +2,7 @@ import os
 
 from flask import Flask, render_template, request, flash, redirect, session, g, url_for, send_file, Response, jsonify
 from flask_debugtoolbar import DebugToolbarExtension
-from models import connect_db, db, User, Contact, ContactStatus, Stage, Task, Transaction, TransType, MailOptions, Property
+from models import connect_db, db, User, Contact, ContactStat, Stage, Task, Transaction, TransType, MailOptions, Property
 from sqlalchemy.exc import IntegrityError
 from forms import RegisterForm, LoginForm, FeedbackForm, ChangePassword, EmailForm, UploadFileForm, ContactForm, UserForm
 from io import BytesIO, StringIO
@@ -376,7 +376,7 @@ def string_to_enum(form):
                 form.mail_preference.data = option
 
     # replace string formatted status options with enum object to be stored in database
-    for status in ContactStatus:
+    for status in ContactStat:
         if status.value == form.status.data:
             form.status.data = status
 

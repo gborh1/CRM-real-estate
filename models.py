@@ -25,7 +25,7 @@ class TransStatus(enum.Enum):
     incomplete = "Incomplete"
 
 
-class ContactStatus(enum.Enum):
+class ContactStat(enum.Enum):
     inactive = "Inactive"
     seller = "Seller"
     buyer = "Buyer"
@@ -190,8 +190,8 @@ class Contact(db.Model):
 
     secondary_DOB = db.Column(db.DateTime)
 
-    status = db.Column(db.Enum(ContactStatus),
-                       default=ContactStatus.inactive, nullable=False)
+    status = db.Column(db.Enum(ContactStat),
+                       default=ContactStat.inactive, nullable=False)
 
     past_client = db.Column(db.Boolean, default=False)
 

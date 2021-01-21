@@ -2,7 +2,7 @@ from flask_wtf import FlaskForm
 from wtforms import StringField, PasswordField, validators, TextAreaField, SubmitField, BooleanField, SelectField
 from wtforms.validators import InputRequired, Email, EqualTo, Length, Optional, ValidationError
 from flask_wtf.file import FileField, FileRequired, FileAllowed
-from models import ContactStatus, MailOptions
+from models import ContactStat, MailOptions
 from wtforms.fields.html5 import DateField, TelField
 import phonenumbers
 
@@ -83,7 +83,7 @@ class ContactForm(FlaskForm):
     state= StringField("State", [Optional()])
     zip_code= StringField("Zip", [Optional()])
 
-    status = SelectField("Status", choices=[(st.value, st.value) for st in ContactStatus])
+    status = SelectField("Status", choices=[(st.value, st.value) for st in ContactStat])
 
     mail_preference = SelectField("Mail Preferences", choices=[(pref.value, pref.value) for pref in MailOptions])
 
