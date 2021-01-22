@@ -21,7 +21,7 @@ import csv
 CURR_USER_KEY = "curr_user"
 
 app = Flask(__name__, static_folder='static')
-app.wsgi_app= WhiteNoise(app.wsgi_app, root=os.path.join(os.path.dirname(__file__), 'static'), prefix='static/')
+app.wsgi_app= WhiteNoise(app.wsgi_app, root='static/', prefix='static/')
 
 
 # Get DB_URI from environ variable (useful for production/testing) or,
@@ -248,6 +248,9 @@ def contacts(user_id):
     ## what follows happens when the form is submitted
     if form.validate_on_submit():
 
+        user= User.query.get(user_id)
+
+
         contact = Contact()
 
         ## get random avatar picture for each contact
@@ -259,6 +262,7 @@ def contacts(user_id):
         string_to_enum(form)
         
         form.populate_obj(contact)
+        user.contacts.append(contact)
         db.session.add(contact)
         db.session.commit()
         return redirect (url_for('contacts', user_id=user_id))
