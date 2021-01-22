@@ -20,8 +20,11 @@ import csv
 
 CURR_USER_KEY = "curr_user"
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static')
 WhiteNoise(app.wsgi_app, root=os.path.join(os.path.dirname(__file__), 'static'), prefix='static/')
+app.wsgi_app.add_files(app.static_folder)
+
+
 # Get DB_URI from environ variable (useful for production/testing) or,
 # if not set there, use development local db.
 app.config['SQLALCHEMY_DATABASE_URI'] = (
