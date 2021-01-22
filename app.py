@@ -8,7 +8,7 @@ from forms import RegisterForm, LoginForm, FeedbackForm, ChangePassword, EmailFo
 from io import BytesIO, StringIO
 from sqlalchemy import or_, desc, asc
 from helper import get_contact_image
-
+from whitenoise import WhiteNoise
 
 import requests
 from typeform import extract_typeform_answers, extract_database
@@ -21,7 +21,7 @@ import csv
 CURR_USER_KEY = "curr_user"
 
 app = Flask(__name__)
-
+app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
 # Get DB_URI from environ variable (useful for production/testing) or,
 # if not set there, use development local db.
 app.config['SQLALCHEMY_DATABASE_URI'] = (
