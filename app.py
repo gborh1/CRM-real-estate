@@ -20,8 +20,8 @@ import csv
 
 CURR_USER_KEY = "curr_user"
 
-app = Flask(__name__, static_folder='static')
-app.wsgi_app= WhiteNoise(app.wsgi_app, root='static/', prefix='static/')
+app = Flask(__name__)
+app.wsgi_app = WhiteNoise(app.wsgi_app, root='static/')
 
 
 # Get DB_URI from environ variable (useful for production/testing) or,
