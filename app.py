@@ -385,7 +385,6 @@ def string_to_enum(form):
         if status.value == form.status.data:
             form.status.data = status
 
-    ## Parse the numbers and put them in regularly.
 
 
 
